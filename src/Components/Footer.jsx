@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Copyright, FbIcon, IgIcon, InIcon, TwIcon } from "./svg";
 
 const Footer = () => {
-  const [time, setTime] = useState<string>('');
+  const [time, setTime] = useState('');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

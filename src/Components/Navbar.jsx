@@ -2,9 +2,8 @@ import React from 'react'
 import { GhIcon } from './svg';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import { useResolvedPath } from 'react-router-dom';
 const Navbar = () => {
-    const pathname = useResolvedPath
+    
     return (
         <>
             <main className="">
@@ -16,7 +15,7 @@ const Navbar = () => {
                     <nav className="flex items-center justify-between">
                         <Link href="/">
                             <div
-                                className={`before:content-[''] font-clashbold font-semibold text-[18px] md:text-[25px] lg:hover:before:bg-[#4C686F]s active:scale-[0.86] transition-all duration-100 before:absolute before:h-1 before:-bottom-1 before:transition-all before:duration-300 ${pathname === '/' ? "text-white hover:before:w-full" : "text-white hover:before:w-full"} relative`}
+                                className={`before:content-[''] font-clashbold font-semibold text-[18px] md:text-[25px] lg:hover:before:bg-[#4C686F]s active:scale-[0.86] transition-all duration-100 before:absolute before:h-1 before:-bottom-1 before:transition-all before:duration-300  "text-white hover:before:w-full" : "text-white hover:before:w-full"} relative`}
                             >
                                 Jeffrey<span>!</span>
                                 <span>⚡</span>
@@ -26,7 +25,7 @@ const Navbar = () => {
                             <Link
                                 target="_blank"
                                 rel="noreferrer"
-                                href="https://www.github.com/Jeffreyxdev"
+                                to="https://www.github.com/Jeffreyxdev"
                                 className="group-hover:text-white transition-colors duration-300"
                             >
                                 <span className="flex items-center gap-[8px] md:gap-[10px]">
