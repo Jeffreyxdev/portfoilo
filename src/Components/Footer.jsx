@@ -37,7 +37,7 @@ const Footer = () => {
               <Copyright className="size-[18px] md:size-[20px]" />
             </span>
             <p className={`text-[#FFFFFF99] md:text-xl text-lg font-medium`}>
-              Honour
+              Jeffrey
               <span className="text-[#FFFFFF] text-[14px] lg:text-base">
                 {" "}
                 53 BC -
