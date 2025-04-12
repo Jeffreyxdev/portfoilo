@@ -1,5 +1,5 @@
 import React from 'react'
-import Experience from "./experience";
+import Experience from "./Experience";
 import { motion } from "framer-motion";
 import { skills } from "../data/data";
 
