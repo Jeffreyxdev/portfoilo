@@ -30,7 +30,7 @@ const Experience = () => {
             {[
               {
                 title: "Frontend Developer",
-                company: "Steadfast International",
+                company: "Desight foundation",
                 location: "Lagos, Nigeria",
                 period: "2025 - Present",
                 description: [
@@ -42,7 +42,7 @@ const Experience = () => {
               },
               {
                 title: "Fullstack Developer & CEO",
-                company: "Pxxl Space",
+                company: "Suifi.ng",
                 location: "PH, Nigeria",
                 period: "2023 - Present",
                 description: [

@@ -1,31 +1,87 @@
-import { GhIcon, MailIcon } from "./svg"; // Adjust the path to your icons file
 import React from "react";
+import { useState, useEffect,} from "react";
+import { LocationIcon, MailIcon, PhoneIcon } from "./svg";
+
 const Contact = () => {
+  const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
+
+  useEffect(() => {
+    setTimeOfDay(getTimeOfDay());
+  }, []);
+
+  function getTimeOfDay() {
+    const now = new Date();
+    const currentHour = now.getHours();
+
+    if (currentHour >= 6 && currentHour < 12) {
+      return "morning";
+    } else if (currentHour >= 12 && currentHour < 18) {
+      return "afternoon";
+    } else {
+      return "evening";
+    }
+  }
+
   return (
-    <section id="contact" className="py-20 bg-gray-100">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold mb-12">Get in Touch</h2>
-        <p className="text-lg text-gray-700 mb-6">
-          I’d love to hear from you! Reach out via email or connect with me on
-          social media.
+    <section className="mx-[30px] lg:mx-[76px] lg:mt-[150px]">
+      <div className="flex flex-col items-center gap-[35px] md:gap-[25px]">
+        <h3
+          className={`font-medium text-[#FFFFFF99] text-lg text-center max-w-[320px] md:max-w-[992px] md:text-[25px] mmd:leading-[37.5px]`}
+        >
+          I can help you design, improve or build the product experience for
+          your new or existing products. Feel free to get in touch with me.
+        </h3>
+        <h1 className="font-clashbold font-semibold text-xl text-white md:text-[60px] md:leading-[73.8px]">
+          Do You Have Any Ideas?
+        </h1>
+
+        <p className="flex items-center font-semibold text-[15px] leading-[22.5px] md:text-[20px] md:leading-[30px] text-[#FFFFFF99]">
+          SAY HELLO! <small className={`animate-bounce`}>👋</small>
         </p>
-        <div className="flex justify-center gap-4">
+      </div>
+      <div
+        className={`mt-[51px] flex flex-col gap-[60px] lg:flex lg:flex-row items-center justify-center`}
+      >
+        <div className="flex flex-col items-center gap-[10px]">
+          <div className="bg-gradient-to-l from-[#CFFAFF] to-[#CFFAFF00] pr-[1px] pt-[1px] max-w-[75px] max-h-[75px]">
+            <MailIcon
+              className={`w-[30px] h-[30px] p-2 md:p-[5px] bg-[#0b040c] md:w-[36px] md:h-[36px]`}
+            />
+          </div>
           <a
-            href="mailto:your.email@example.com"
-            className="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition flex items-center gap-2"
+            className={`text-[#FFFFFF99] font-medium text-base md:text-[20px] md:leading-[30px]`}
+            href="mailto:jfyjeffreyx@gmail.com"
           >
-            <MailIcon className="w-6 h-6" fill="white" />
-            Email Me
+            jfyjeffreyx@gmail.com
           </a>
+        </div>
+        <div className="flex flex-col items-center gap-[10px]">
+          <div className="bg-gradient-to-r to-[#CFFAFF] from-[#CFFAFF00] pr-[1px] pt-[1px] max-w-[75px] max-h-[50px]">
+            <PhoneIcon
+              className={`w-[30px] h-[30px] p-2 md:p-[5px] bg-[#0b040c] md:w-[36px] md:h-[36px]`}
+            />
+          </div>
           <a
-            href="https://github.com/Jeffreyxdev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition flex items-center gap-2"
+            href="tel:+2347045104464"
+            className={`text-[#FFFFFF99] tex-base font-medium md:text-[20px] md:leading-[30px]`}
           >
-            <GhIcon className="w-6 h-6" fill="white" />
-            GitHub
+            +2347045104464
           </a>
+        </div>
+        <div className="flex flex-col items-center gap-[10px]">
+          <div className="bg-gradient-to-l from-[#CFFAFF] to-[#CFFAFF00] pr-[1px] pt-[1px] max-w-[75px] max-h-[75px]">
+            <LocationIcon
+              className={`w-[30px] h-[30px] p-2 md:p-[5px] bg-[#0b040c] md:w-[36px] md:h-[36px]`}
+            />
+          </div>
+          <p
+            className={`text-[#FFFFFF99] text-base mx-auto text-center font-medium md:text-[20px] md:leading-[30px]`}
+          >
+            {timeOfDay === "morning" && <span>metaverse!⚡</span>}
+            {timeOfDay === "afternoon" && <span>localhost:3000</span>}
+            {timeOfDay === "evening" && <span>127.0.0.1:5500</span>}
+            {/* {timeOfDay === "evening" && <span>somewhere in the metaverse</span>} */}
+          </p>
         </div>
       </div>
     </section>

@@ -3,10 +3,11 @@ import Hero from "./Components/Hero"
 import React from "react"
 import Projects from "./Components/Projects"
 import Services from "./Components/Services"
-import About from "./Components/About"
+
 import Contact from "./Components/Contact"
 import Navbar from "./Components/Navbar"
 import Skills from "./Components/Skills"
+import Footer from "./Components/Footer"
 function App() {
   
 
@@ -18,8 +19,9 @@ function App() {
       <Services/>
       <Projects/>
       <Skills/>
-      <About/>
+      
       <Contact/>
+      <Footer/>
     
     </>
   )
