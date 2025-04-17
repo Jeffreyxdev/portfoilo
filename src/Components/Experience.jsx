@@ -31,12 +31,12 @@ const Experience = () => {
               {
                 title: "Frontend Developer",
                 company: "Desight foundation",
-                location: "Lagos, Nigeria",
+                location: "Port harcourt, Nigeria",
                 period: "2025 - Present",
                 description: [
-                  "Leading the development of a Progressive Web App (PWA) eCommerce platform, Admin Panel, and Affiliate Marketing Website",
+                  "Leading the development of a Progressive Web App (PWA) sturctured website, donation panel",
                   "Implementing responsive and mobile-first design principles with modern frontend technologies",
-                  "Collaborating with the product team to deliver high-performance web applications with focus on user experience",
+                  "Collaborating with the organizations and government teams to deliver high-performance eye care services for Africa",
                   "Building scalable frontend architecture for multiple interconnected platforms"
                 ]
               },
@@ -48,23 +48,24 @@ const Experience = () => {
                 description: [
                   "Led the development and implementation of innovative web solutions.",
                   "Managed both frontend and backend aspects of projects.",
-                  "Oversaw company operations and strategic decision-making as CEO."
+                  "Oversaw company operations and strategic decision-making as CEO.",
+                  "Implementing a new world breaking solution the world is yet to see"
                 ]
               },
               {
-                title: "Fullstack Developer",
-                company: "Indulgetix",
-                location: "Lagos, Nigeria",
+                title: "Front-end supervisor",
+                company: "Autosquare",
+                location: "Florida",
                 period: "2024 - Present",
                 description: [
-                  "Built backend infrastructure for an event management platform.",
+                  "superviesed and reviewed frontend infrastructure for a car part dealership company.",
                   "Designed and implemented APIs for seamless event booking and management.",
-                  "Optimized database performance for handling high-volume ticket sales."
+                  "Optimized database performance for handling high-volume."
                 ]
               },
               {
                 title: "Backend Developer",
-                company: "Organ Station",
+                company: "",
                 location: "Remote",
                 period: "2022 - 2023",
                 description: [
@@ -74,12 +75,12 @@ const Experience = () => {
                 ]
               },
               {
-                title: "Director of IT",
-                company: "Intelligentsia",
+                title: "Tech tutor",
+                company: "",
                 location: "PH, Nigeria",
-                period: "2018 - Present",
+                period: "2023 - Present",
                 description: [
-                  "Oversee all IT operations and infrastructure for the school.",
+                  "Taught student the concepts of designing",
                   "Implement innovative technology solutions to enhance learning experiences.",
                   "Manage IT staff and ensure alignment with educational goals."
                 ]
@@ -145,7 +146,7 @@ const Experience = () => {
           >
             <Resume
               pdfUrl={resumeUrl}
-              fileName="RobinsonHonour.pdf"
+              fileName="Jeffery Agabaenwere.pdf"
               buttonText="Download Resume"
             />
           </motion.div>
