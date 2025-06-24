@@ -1,13 +1,13 @@
 import React from 'react'
 
 import Resume from "./Resume";
-const resumeUrl = "/Assets/Jeffrey's Resume.pdf";
+import resumeUrl from "../Assets/jeffrey.pdf";
 import { motion } from "framer-motion";
 
 const Experience = () => {
   return (
     <section className="relative pt-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#130b1c] via-[#130b1c]/80 to-transparent opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#130b1c]/80 to-transparent opacity-30 rounded-2xl" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
         <motion.div
@@ -17,14 +17,14 @@ const Experience = () => {
           className="mb-20"
         >
           <span className="text-[#6f1cd7] text-sm tracking-[0.25em] uppercase mb-4 block font-medium">Experience</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-clashbold text-white mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl   poppins font-clashbold text-white mb-6 tracking-tight">
             Professional Journey
           </h2>
           <div className="h-[2px] w-24 bg-gradient-to-r from-[#6f1cd7] to-transparent mb-8" />
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-0 md:left-12 top-0 w-[1px] h-full bg-gradient-to-b from-[#6f1cd7]/40 via-[#6f1cd7]/20 to-transparent" />
+          <div className="absolute left-0 md:left-12 top-0 w-[1px] h-full bg-gradient-to-b from-[#6f2cd7]/40 via-[#f8c3]/20 to-transparent rounded-2xl" />
 
           <div className="space-y-12">
             {[
@@ -40,6 +40,20 @@ const Experience = () => {
                   "Building scalable frontend architecture for multiple interconnected platforms"
                 ]
               },
+              {
+                 title: "CTO & Full-Stack Developer",
+                    company: "Lemren",
+                    location: "Remote / Nigeria",
+                    period: "2025 - Present",
+                    description: [
+                      "Spearheading the technical vision and product architecture for Lemren — a decentralized car-sharing platform revolutionizing mobility in Africa",
+                      "Leading frontend and backend development using Next.js, Firebase, and modern design systems to deliver a seamless car rental experience",
+                      "Integrating authentication flows (Google, Email, Phone) and scalable database structure to support user onboarding and real-time availability",
+                      "Collaborating with the founding team on product strategy, market positioning, and go-to-market execution",
+                      "Ensuring secure, efficient deployment and CI/CD pipelines to maintain rapid iteration and production stability"
+                    ]
+                  }     
+,
               {
                 title: "Fullstack Developer & CEO",
                 company: "Suifi.ng",
@@ -116,18 +130,18 @@ const Experience = () => {
                       {experience.title}
                     </h3>
                     <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-6">
-                      <p className="text-[#6f1cd7] font-medium tracking-wide">{experience.company}</p>
+                      <p className="text-[#fff] font-medium tracking-wide">{experience.company}</p>
                       <div className="flex items-center gap-4">
-                        <span className="hidden md:inline text-[#FFFFFF40]">•</span>
-                        <span className="text-[#FFFFFF99] text-sm">{experience.location}</span>
-                        <span className="text-[#FFFFFF40]">•</span>
-                        <span className="text-[#FFFFFF99] text-sm tracking-wider">{experience.period}</span>
+                        <span className="hidden md:inline text-[#fff]">•</span>
+                        <span className="text-[#fff] text-sm">{experience.location}</span>
+                        <span className="text-[#fff]">•</span>
+                        <span className="text-[#fff] text-sm tracking-wider">{experience.period}</span>
                       </div>
                     </div>
                     <ul className="space-y-3">
                       {experience.description.map((item, i) => (
-                        <li key={i} className="text-[#FFFFFF99] leading-relaxed font-light flex items-start">
-                          <span className="text-[#6f1cd7] mr-3 mt-1.5">•</span>
+                        <li key={i} className="text-[#fff] leading-relaxed font-light flex items-start">
+                          <span className="text-[#fff] mr-3 mt-1.5">•</span>
                           {item}
                         </li>
                       ))}
@@ -142,7 +156,8 @@ const Experience = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-20 pl-16 md:pl-24"
+            className="mt-20 pl-16 md:pl-24 text-white"
+            
           >
             <Resume
               pdfUrl={resumeUrl}

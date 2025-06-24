@@ -1,4 +1,17 @@
 export const projects = [
+
+  {
+    name: "ApexoAi",
+    desc: "ApexoAi is an ai angent i built to enchance your job hunt automation such as sending emails, drafting resumes, career advice, and more. It is built with the latest technologies and is designed to be user-friendly and efficient.",
+    lang: "React.js + Node.js + TailwindCSS + TypeScript",
+    link: "https://apexoai.vercel.app/",
+  },
+  {
+    name: "lemren",
+    desc: "lemren is a car marketplace one of the first car marketplace in Nigeria, I'm the CTO we are still building and improving to be the best car marketplace in Nigeria",
+    lang: "React.js + Node.js + TailwindCSS + TypeScript",
+    link: "https://lemren.com/",
+  },
   {
     name: "SUIFI",
     desc: "A cutting edge technolongy I'm working on that swaps crypto directly to local fiats",
@@ -29,7 +42,7 @@ export const projects = [
       link: "https://www.desightfoundation.com.ng/",
     },
     {
-      name: "A sbscription site",
+      name: "A subscription site",
       desc: "Authentication and validation sequence",
       lang: "TypeScript + Node.js + TailwindCSS + firebase",
       link: "https://subscription-eta-six.vercel.app/",
@@ -64,88 +77,54 @@ export const projects = [
   
   export const experienceData = [
     {
-      role: "Frontend Developer",
+      role: "CTO & team lead",
       span: "2023 - till date",
-      comp: "Desight Fundation",
-      desc: "I work as a Lead Frontend Engineer at Desight foundation, crafting thoughtful and inclusive experiences that adhere to web standards.",
+      comp: "AxpeoAI",
+      desc: "I lead with a builder’s mindset — hands-on in shipping features, designing intelligent systems, and ensuring tight alignment between technical execution and business goals. I am responsible for the technical direction, architecture, and execution of our product vision.",
+      
     },
   ];
   
   export const skills = [
-    {
-      id: 0,
-      title: "Html",
-    },
-    {
-      id: 1,
-      title: "Css",
-    },
-    {
-      id: 2,
-      title: "Bootstrap",
-    },
-    {
-      id: 3,
-      title: "TailwindCSS",
-    },
-    {
-      id: 4,
-      title: "SCSS",
-    },
-    {
-      id: 5,
-      title: "JavaScript",
-    },
-    {
-      id: 6,
-      title: "TypeScript",
-    },
-    {
-      id: 7,
-      title: "Jquery",
-    },
-    {
-      id: 8,
-      title: "ReactJs",
-    },
-    {
-      id: 9,
-      title: "NextJs",
-    },
-    {
-      id: 10,
-      title: "Git",
-    },
-    {
-      id: 11,
-      title: "Github",
-    },
-    {
-      id: 12,
-      title: "Figma",
-    },
-    {
-      id: 13,
-      title: "Photoshop",
-    },
-    {
-      id: 14,
-      title: "Premiere pro",
-    },
-    {
-      id: 15,
-      title: "NodeJs/Express",
-    },
-    {
-      id: 16,
-      title: "Python",
-    },
-    {
-      id: 17,
-      title: "Java",
-    },
-    {
-      id: Math.random(),
-      title: "MongoDB",
-    },
+      { id: 0, title: "HTML" },
+  { id: 1, title: "CSS" },
+  { id: 2, title: "Bootstrap" },
+  { id: 3, title: "TailwindCSS" },
+  { id: 4, title: "SCSS" },
+  { id: 5, title: "JavaScript" },
+  { id: 6, title: "TypeScript" },
+  { id: 7, title: "jQuery" },
+  { id: 8, title: "React.js" },
+  { id: 9, title: "Next.js" },
+
+  // Backend
+  { id: 10, title: "Node.js / Express" },
+  { id: 11, title: "Python" },
+  { id: 12, title: "Java" },
+  { id: 13, title: "MongoDB" },
+  { id: 14, title: "Firebase" },
+  { id: 15, title: "MySQL" },
+  { id: 16, title: "REST APIs" },
+  { id: 17, title: "WebSockets" },
+
+  // Blockchain / Smart Contracts
+  { id: 18, title: "Move Language (Sui)" },
+  { id: 19, title: "Solidity (Basics)" },
+
+  // Design
+  { id: 20, title: "Figma" },
+  { id: 21, title: "Adobe Photoshop" },
+  { id: 22, title: "Premiere Pro" },
+
+  // Tools & DevOps
+  { id: 23, title: "Git" },
+  { id: 24, title: "GitHub" },
+  { id: 25, title: "Postman" },
+  { id: 26, title: "VS Code" },
+  { id: 27, title: "Vercel / Netlify" },
+
+  // Bonus Skills (Optional)
+  { id: 28, title: "System Design" },
+  { id: 29, title: "Product Management" },
+  { id: 30, title: "Agile / Scrum" },
   ];

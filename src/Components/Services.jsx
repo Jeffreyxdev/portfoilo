@@ -6,54 +6,63 @@ import {
     Palette,
     Cloud,
     Code,
+    SmartphoneIcon,
+    Briefcase,
     Server
 } from 'lucide-react';
 
 const services = [
-    {
-        id: 1,
-        title: "FRONTEND DEVELOPMENT",
-        description: "Crafting responsive and interactive web applications using React, Next.js, and TypeScript. Focusing on modern UI/UX practices and optimal performance.",
-        icon: Code,
-        category: "Development"
-    },
-    {
-        id: 2,
-        title: "BACKEND DEVELOPMENT",
-        description: "Building robust server-side applications and APIs using Node.js, Python, and database technologies. Ensuring scalability and security.",
-        icon: Server,
-        category: "Development"
-    },
-    {
-        id: 3,
-        title: "APP DEVELOPMENT",
-        description: "Developing cross-platform mobile applications and desktop software solutions that deliver seamless user experiences across different devices.",
-        icon: Smartphone,
-        category: "Mobile"
-    },
-    {
-        id: 4,
-        title: "SMART-CONTRACT DEVELOPMENT",
-        description: "Building and deploying blockchain, specializing on Sui blockchain using move language.",
-        icon: GitBranch ,
-        category: "Blockchain"
-    },
-    {
-        id: 5,
-        title: "UI DESIGN",
-        description: "Crafting intuitive and visually appealing user interfaces with a focus on user-centered design principles and modern design trends.",
-        icon: Palette,
-        category: "Design"
-    },
-    {
-        id: 6,
-        title: "BOT DEVELOPMENT",
-        description: "Implementing and managing bot programs, leveraging tools for scalable and efficient bot deployment and  management.",
-        icon: Cloud,
-        category: "Infrastructure"
-    }
-    
+{
+    id: 1,
+    title: "FOUNDER-LEVEL STRATEGY",
+    description: "Leading end-to-end product cycles from idea to MVP to growth. I think in terms of markets, users, distribution, and long-term defensibility.",
+    icon: Briefcase, // swap in your preferred icon for "founder/strategy"
+    category: "Leadership",
+  },
+  {
+    id: 2,
+    title: "BACKEND DEVELOPMENT",
+    description: "Designing and engineering scalable backend systems with Node.js and Python. From API architecture to data modeling, I ensure infrastructure that supports real-world growth and scale.",
+    icon: Server,
+    category: "Development",
+  },  {
+    id: 3,
+    title: "FRONTEND DEVELOPMENT",
+    description: "Building modern, responsive web interfaces using React, Next.js, and TypeScript. Focused on performance, scalability, and exceptional user experience — with a product mindset at the core.",
+    icon: Code,
+    category: "Development",
+  },
+  {
+    id: 4,
+    title: "APP DEVELOPMENT",
+    description: "Delivering cross-platform mobile and desktop applications that merge design and functionality. Shipping real products, not just prototypes — fast, clean, and user-focused.",
+    icon: Smartphone,
+    category: "Mobile",
+  },
+  {
+    id: 5,
+    title: "SMART CONTRACT DEVELOPMENT",
+    description: "Deploying secure, efficient smart contracts on the Sui blockchain using Move. Deeply involved in the Sui ecosystem as both a builder and community voice.",
+    icon: GitBranch,
+    category: "Blockchain",
+  },
+  {
+    id: 6,
+    title: "UI & PRODUCT DESIGN",
+    description: "Designing intuitive, elegant interfaces with Figma — blending user psychology, design systems, and startup aesthetics. Every pixel earns its place.",
+    icon: Palette,
+    category: "Design",
+  },
+  {
+    id: 7,
+    title: "BOT & SYSTEM AUTOMATION",
+    description: "Creating bots that automate workflows, monitor data, and scale efficiently. Architecting intelligent systems to give businesses superpowers.",
+    icon: Cloud,
+    category: "Infrastructure",
+  },
+  
 ];
+
 
 
 const Services = () => {
@@ -68,12 +77,12 @@ const Services = () => {
                     viewport={{ once: true }}
                     className="text-left mb-5"
                 >
-                    <h1 className="text-2xl md:text-3xl font-clashbold text-white mb-6 tracking-tight">
-                        Services
-                        <span className="inline-block ml-4 transform hover:scale-110 transition-transform">🔥</span>
+                    <h1 className="text-2xl poppins md:text-3xl font-medium text-black mb-6 tracking-tight">
+                        Skills
+                        
                     </h1>
-                    <div className="h-1 w-24 bg-gradient-to-r from-purple-500 to-blue-500 mb-6" />
-                    <p className="text-[#FFFFFF99] text-base md:text-l ">
+                    <div className="h-1 w-24 bg-gradient-to-r from-blue-800 to-blue-500 mb-6" />
+                    <p className="text-[#000] text-base md:text-l ">
                         Specialized in multiple domains of software engineering
                     </p>
                 </motion.div>
@@ -92,14 +101,14 @@ const Services = () => {
                                 translateY: -5,
                                 boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
                             }}
-                            className="group relative bg-[#130b1c]/80 backdrop-blur-lg rounded-lg overflow-hidden border border-[#ffffff10]"
+                            className="group relative bg-[#000]/90 backdrop-blur-lg rounded-lg overflow-hidden border border-[#ffffff10]"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="relative p-8">
                                 <div className="flex items-center justify-between mb-6">
                                     <span className="text-3xl transform group-hover:scale-110 transition-transform duration-300">
-                                        <service.icon className="w-8 h-8 text-purple-500" strokeWidth={1.5} />
+                                        <service.icon className="w-8 h-8 text-[#fff]" strokeWidth={1.5} />
                                     </span>
                                     <div className="h-px w-16 bg-gradient-to-r from-purple-500 to-blue-500 opacity-50" />
                                 </div>

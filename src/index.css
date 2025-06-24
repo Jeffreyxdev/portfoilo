@@ -27,11 +27,13 @@ body {
   overflow-y: scroll;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: #0b040c;
-  color: white;
-  font-family: "Poppins", sans-serif;
+  background-color: #E8EFFA;
+  color: black;
+  font-family: "Poppins", sans-serif, ;
 }
-
+.poppins {
+  font-family: 'Poppins', sans-serif;
+}
 .font-clashbold {
   font-family: clashBold;
   font-weight: bold;
@@ -44,27 +46,27 @@ body {
 .gradientText {
   overflow: hidden;
   background: linear-gradient(76deg,
-      #fde1ff,
-      #e0e7ff,
-      #e0f9ff,
-      #fffae9,
-      #e8eaff,
+      #aa3535,
+      #3f4f85,
+      #23444d,
+      #62c7c2,
+      #4b52a3,
+      #504f50,
+      #83aec9,
+      #c951d1,
+      #1c2c61,
+      #216d80,
+      #cfbe83,
+      #747bce,
       #ffe3f7,
-      #daf1ff,
-      #fde1ff,
+      #18699b,
+      #700e77,
       #e0e7ff,
-      #e0f9ff,
-      #fffae9,
+      #1c5f6e,
+      #dfd4b1,
       #e8eaff,
-      #ffe3f7,
-      #daf1ff,
-      #fde1ff,
-      #e0e7ff,
-      #e0f9ff,
-      #fffae9,
-      #e8eaff,
-      #ffe3f7,
-      #daf1ff);
+      #f1d6f1,
+      #E8EFFA);
   background-size: 500% 500%;
   -webkit-animation: slime 45s ease infinite;
   animation: slime 45s ease infinite;

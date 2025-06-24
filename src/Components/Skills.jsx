@@ -8,7 +8,7 @@ const Skills = () => {
 
     return (
         <section className="relative py-32 px-4 md:px-8 lg:px-16 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#130b1c] via-[#130b1c]/80 to-transparent opacity-30" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#E8EFFA] via-[#130b1c]/80 to-transparent opacity-30" />
 
             <div className="max-w-7xl mx-auto relative">
                 <motion.div
@@ -18,11 +18,11 @@ const Skills = () => {
                     className="mb-20"
                 >
                     <span className="text-[#6f1cd7] text-sm tracking-[0.2em] uppercase mb-4 block font-medium">Expertise</span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-clashbold text-white mb-6 tracking-tight">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-clashbold text-black mb-6 tracking-tight">
                         Technical Proficiency
                     </h2>
                     <div className="h-[1px] w-16 bg-[#6f1cd7] opacity-50 mb-8" />
-                    <p className="text-[#FFFFFF99] text-lg max-w-2xl font-light leading-relaxed">
+                    <p className="text-[#000] text-lg max-w-2xl font-light leading-relaxed">
                         A comprehensive toolkit refined through years of practical experience
                     </p>
                 </motion.div>
@@ -35,11 +35,12 @@ const Skills = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{
+                             whileHover={{
                                 scale: 1.02,
-                                backgroundColor: 'rgba(111, 28, 215, 0.1)'
+                                translateY: -5,
+                                boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
                             }}
-                            className="group relative bg-[#130b1c]/80 backdrop-blur-sm border border-[#ffffff08] p-6 transition-all duration-300"
+                            className="group relative bg-[#000]/80 backdrop-blur-sm border border-[#ffffff08] p-6 transition-all duration-300"
                         >
                             <div className="relative z-10">
                                 <p className="text-white font-medium tracking-wide mb-2">

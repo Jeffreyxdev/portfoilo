@@ -36,18 +36,18 @@ const Footer = () => {
             <span>
               <Copyright className="size-[18px] md:size-[20px]" />
             </span>
-            <p className={`text-[#FFFFFF99] md:text-xl text-lg font-medium`}>
+            <p className={`text-[#000] md:text-xl text-lg font-medium`}>
               Jeffrey
-              <span className="text-[#FFFFFF] text-[14px] lg:text-base">
+              <span className="text-[#000] text-[14px] lg:text-base">
                 {" "}
                 53 BC -
               </span>{" "}
-              <span className="text-[#FFFFFF] text-[14px] lg:text-base">
+              <span className="text-[#000] text-[14px] lg:text-base">
                 {new Date().getFullYear()}
               </span>
             </p>
           </div>
-          <p className="text-[#FFFFFF99] transition-all duration-300 text-end text-sm lg:text-base mt-1">
+          <p className="text-[#000] transition-all duration-300 text-end text-sm lg:text-base mt-1">
             {displayTime}
           </p>
         </div>
@@ -61,8 +61,8 @@ const Footer = () => {
             className="h-auto w-auto"
           >
             <FbIcon
-              fill={`#FFFFFF99`}
-              className={`w-[30px] h-[30px] rounded-full border-[#FFFFFF99] border-solid border-[2px] p-0.5  transition-all duration-500 hover:bg-gray-500`}
+              fill={`#000`}
+              className={`w-[30px] h-[30px] rounded-full border-[#000] border-solid border-[2px] p-0.5  transition-all duration-500 hover:bg-gray-500`}
             />
           </motion.a>
           <motion.a
@@ -74,8 +74,8 @@ const Footer = () => {
             className="h-auto w-auto"
           >
             <TwIcon
-              fill="#FFFFFF99"
-              className={`w-[30px] h-[30px] rounded-full border-[#FFFFFF99] border-solid border-[2px] p-1  transition-all duration-500 hover:bg-gray-500`}
+              fill="#000"
+              className={`w-[30px] h-[30px] rounded-full border-[#000] border-solid border-[2px] p-1  transition-all duration-500 hover:bg-gray-500`}
             />
           </motion.a>
           <motion.a
@@ -87,8 +87,8 @@ const Footer = () => {
             className="h-auto w-auto"
           >
             <IgIcon
-              fill={`#FFFFFF99`}
-              className={`w-[30px] h-[30px] rounded-full border-[#FFFFFF99] border-solid border-[2px] p-0.5  transition-all duration-500 hover:bg-gray-500`}
+              fill={`#000`}
+              className={`w-[30px] h-[30px] rounded-full border-[#000] border-solid border-[2px] p-0.5  transition-all duration-500 hover:bg-gray-500`}
             />
           </motion.a>
           <motion.a
@@ -100,8 +100,8 @@ const Footer = () => {
             className="h-auto w-auto"
           >
             <InIcon
-              fill={`#FFFFFF99`}
-              className="w-[30px] h-[30px] rounded-full border-[#FFFFFF99] border-solid border-[2px] p-0.5  transition-all duration-700 hover:bg-gray-500"
+              fill={`#000`}
+              className="w-[30px] h-[30px] rounded-full border-[#000] border-solid border-[2px] p-0.5  transition-all duration-700 hover:bg-gray-500"
             />
           </motion.a>
         </div>
