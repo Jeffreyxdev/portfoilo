@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Projects = () => {
   return (
     <section className="relative py-24 px-4 md:px-8 lg:px-16 overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-b from-[#E8EFFA] to-transparent opacity-40" />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#252525] to-[#535559]" />
 
     <div className="max-w-7xl mx-auto relative">
         <motion.div
@@ -16,12 +16,12 @@ const Projects = () => {
             viewport={{ once: true }}
             className="text-left mb-5"
         >
-            <h2 className="text-2xl md:text-3xl poppins font-medium text-black mb-6 tracking-tight">
+            <h2 className="text-2xl md:text-3xl poppins font-medium text-white mb-6 tracking-tight">
                 Projects
                 <span className="inline-block ml-4 transform hover:scale-110 transition-transform"></span>
             </h2>
             <div className="h-1 w-24 bg-gradient-to-r from-blue-800 to-blue-500 mb-6" />
-            <p className="text-[#000] text-base md:text-l ">
+            <p className="text-[#fff] text-base md:text-l ">
                 Showcasing my latest works and experiments in tech
             </p>
         </motion.div>

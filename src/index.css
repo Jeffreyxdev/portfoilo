@@ -21,15 +21,32 @@ html {
 }
 
 body {
-
   scroll-behavior: auto;
   overflow-x: hidden;
   overflow-y: scroll;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: #E8EFFA;
-  color: black;
-  font-family: "Poppins", sans-serif, ;
+  /* Updated background to match the gradient */
+  background: linear-gradient(to right, #131313, #383838);
+
+  color: rgb(255, 255, 255);
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+
+/* Glossy white lines */
+body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(to right, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 100%);
+  box-shadow: 0 2px 24px 0 rgba(255,255,255,0.18);
+  pointer-events: none;
+  z-index: 1;
 }
 .poppins {
   font-family: 'Poppins', sans-serif;
@@ -42,34 +59,9 @@ body {
 .font-clash {
   font-family: clash;
 }
-
 .gradientText {
   overflow: hidden;
-  background: linear-gradient(76deg,
-      #aa3535,
-      #3f4f85,
-      #23444d,
-      #62c7c2,
-      #4b52a3,
-      #504f50,
-      #83aec9,
-      #c951d1,
-      #1c2c61,
-      #216d80,
-      #cfbe83,
-      #747bce,
-      #ffe3f7,
-      #18699b,
-      #700e77,
-      #e0e7ff,
-      #1c5f6e,
-      #dfd4b1,
-      #e8eaff,
-      #f1d6f1,
-      #E8EFFA);
-  background-size: 500% 500%;
-  -webkit-animation: slime 45s ease infinite;
-  animation: slime 45s ease infinite;
+  background: linear-gradient(to right, #e9e9e9, #ffffff, #546c92);
   background-clip: text;
   -webkit-background-clip: text;
 }

@@ -9,13 +9,13 @@ const Navbar = () => {
             <main className="">
                 <header
                     className={clsx(
-                        "fixed z-40 top-0 md:relatives bg-[#E8EFFA] pb-3  w-full pt-[20px] px-[32px] md:py-[30px] lg:px-[80px]"
+                        "fixed z-40 top-0 md:relatives bg-gradient-to-r from-[#131313]  to-[#383838] pb-3 w-full pt-[20px] px-[32px] md:py-[30px] lg:px-[80px]"
                     )}
                 >
                     <nav className="flex items-center justify-between">
                         <Link to="/">
                             <div
-                                className={`before:content-['']  text-black font-medium text-[18px] md:text-[25px] lg:hover:before:bg-[#0000]s active:scale-[0.86] transition-all duration-100 before:absolute before:h-1 </span>before:-bottom-1 before:transition-all before:duration-300  "text-black hover:before:w-full" : "text-black/90 hover:before:w-full"} relative`}
+                                className={`before:content-['']  text-white font-medium text-[18px] md:text-[25px] lg:hover:before:bg-[#0000]s active:scale-[0.86] transition-all duration-100 before:absolute before:h-1 </span>before:-bottom-1 before:transition-all before:duration-300  "text-black hover:before:w-full" : "text-black/90 hover:before:w-full"} relative`}
                             >
                                 Jeffrey<span></span>
                                 <span></span>

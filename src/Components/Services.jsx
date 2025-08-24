@@ -77,12 +77,12 @@ const Services = () => {
                     viewport={{ once: true }}
                     className="text-left mb-5"
                 >
-                    <h1 className="text-2xl poppins md:text-3xl font-medium text-black mb-6 tracking-tight">
+                    <h1 className="text-2xl poppins md:text-3xl font-medium text-white mb-6 tracking-tight">
                         Skills
                         
                     </h1>
                     <div className="h-1 w-24 bg-gradient-to-r from-blue-800 to-blue-500 mb-6" />
-                    <p className="text-[#000] text-base md:text-l ">
+                    <p className="text-[#fff] text-base md:text-l ">
                         Specialized in multiple domains of software engineering
                     </p>
                 </motion.div>

@@ -8,6 +8,7 @@ import Contact from "./Components/Contact"
 import Navbar from "./Components/Navbar"
 import Skills from "./Components/Skills"
 import Footer from "./Components/Footer"
+import ParticlesBackground from "./Components/ParticlesBackground"
 function App() {
   
 
@@ -15,6 +16,7 @@ function App() {
     <>
 
     <Navbar/>
+    <ParticlesBackground/>
       <Hero/>
       <Services/>
       <Projects/>
