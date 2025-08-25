@@ -40,7 +40,7 @@ const Skills = () => {
                                 translateY: -5,
                                 boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
                             }}
-                            className="group relative bg-[#000]/80 backdrop-blur-sm border border-[#ffffff08] p-6 transition-all duration-300"
+                            className="group relative bg-[#000]/80 backdrop-blur-sm border rounded-2xl border-[#ffffff08] p-6 transition-all duration-300"
                         >
                             <div className="relative z-10">
                                 <p className="text-white font-medium tracking-wide mb-2">

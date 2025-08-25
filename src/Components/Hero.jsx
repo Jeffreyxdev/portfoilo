@@ -89,10 +89,10 @@ const Hero = () => {
                   height={400}
                   className="absolute w-full h-full bottom-3 right-4 md:bottom-5 md:right-6 lg:bottom-10 lg:right-12 rounded-2xl"
                   draggable={false}
-                  priority/>
+                  priority='true'/>
               </div>
               <motion.div
-                className={`shrink-0 w-[300px] h-[300px] lg:min-w-[400px] lg:min-h-[400px] border-[3px] border-[#1c2c61]`}
+                className={`shrink-0 w-[300px] h-[300px] lg:min-w-[400px] lg:min-h-[400px] rounded-2xl border-[3px] border-[#fff]`}
               ></motion.div>
               
             </div>

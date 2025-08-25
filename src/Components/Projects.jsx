@@ -39,11 +39,12 @@ const Projects = () => {
                                 translateY: -5,
                                 boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
                             }}
-                    className="group relative bg-black/80 backdrop-blur-lg rounded-lg overflow-hidden border border-[#ffffff10]"
+                    className="group relative bg-black/40 backdrop-blur-lg rounded-2xl overflow-hidden border border-[#ffffff10]"
                 >
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <div className="relative p-8 flex flex-col h-full">
+                    <div className="relative p-5 flex flex-col h-full">
+                       <img src={project.img} alt={project.name}  className="rounded-lg" /> 
                         <h3 className="text-white text-2xl poppins mb-3">
                             {project.name}
                         </h3>
@@ -64,7 +65,7 @@ const Projects = () => {
                         >
                             <motion.div
                                 whileHover={{ x: 5 }}
-                                className="flex items-center space-x-3 text-white hover:text-purple-300 transition-colors"
+                                className="flex items-center space-x-3 text-white hover:text-blue-300 transition-colors"
                             >
                                 <span className="text-sm font-medium">View Project</span>
                                 <Arrow className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />

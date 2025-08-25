@@ -1,65 +1,91 @@
+import port from '../Assets/port.png'
+import suiver from '../Assets/suiver.png'
+import apexo from '../Assets/apexo.png'
+import lemren from '../Assets/lemren.png'
+import ritman from '../Assets/ritman.png'
+import figmaland from '../Assets/figmaland.png'
+import fiverr from '../Assets/fiverr.png'
+import vyral from '../Assets/vyral.png'
+import bot from '../Assets/bot.png'
+import sub from '../Assets/sub.png'
+import exla from '../Assets/exla.png'
+import desight from '../Assets/desight.png'
+
 export const projects = [
 
   {
+    img:apexo,
     name: "ApexoAi",
     desc: "ApexoAi is an ai angent i built to enchance your job hunt automation such as sending emails, drafting resumes, career advice, and more. It is built with the latest technologies and is designed to be user-friendly and efficient.",
     lang: "React.js + Node.js + TailwindCSS + TypeScript",
     link: "https://apexoai.vercel.app/",
   },
   {
+    img: lemren,
     name: "lemren",
     desc: "lemren is a car marketplace one of the first car marketplace in Nigeria, I'm the CTO we are still building and improving to be the best car marketplace in Nigeria",
     lang: "React.js + Node.js + TailwindCSS + TypeScript",
-    link: "https://lemren.com/",
+    link: "https://lamren.vercel.app/",
   },
-  {
-    name: "SUIFI",
+  {                           
+    img: suiver,
+    name: "SUIVER",
     desc: "A cutting edge technolongy I'm working on that swaps crypto directly to local fiats",
-    lang: "Node.js + Move + TailwindCSS + JavaScript",
+    lang: "Node.js + Move + TailwindCSS + JavaScript, reactNative, web3.js",
     link: "https://suifing.vercel.app/",
   },
+  {
+    img: vyral,
+    name: "vyral",
+    desc: "A web3 social media platform that allows creators to share and discover content, connect with others, and engage in discussions. It is built with the latest technologies and is designed to be user-friendly and efficient.",
+    lang: "React.js + Node.js + TailwindCSS + TypeScript",
+    link: "https://vyral-seven.vercel.app/",
+  },
     {
+      img: bot,
       name: "Trading bot",
       desc: "I built a trading bot that tracks memecoins on solana and trades them using various decentralized API's",
       lang: "phyton + solana",
-      link: "t.me/adilab_bot",
-    }, {
+      link: "https://t.me/adilab_bot",
+    }, 
+    {
+      img: exla,
       name: "Exla",
       desc: "Exla is a ticket marketplace I built, where artist can market and sell their concert tickets, still under development ",
       lang: "React.js + Node.js + TailwindCSS",
-      link: "https://github.com/Jeffreyxdev/Exla/",
+      link: "https://exla.vercel.app/discover",
     },
     {
+      img: figmaland,
       name: "Figmaland",
       desc: "building a community for designers ",
       lang: "React.js + Node.js + TailwindCSS",
       link: "https://figma-land-demo.vercel.app/",
     },
     {
+      img: desight,
       name: "Desight foundation",
       desc: "I built and manage the site of an eye foundation in Nigeria",
       lang: "Node.js + TypeScript + JavaScript",
       link: "https://www.desightfoundation.com.ng/",
     },
     {
+      img: sub,
       name: "A subscription site",
       desc: "Authentication and validation sequence",
       lang: "TypeScript + Node.js + TailwindCSS + firebase",
       link: "https://subscription-eta-six.vercel.app/",
     },
+  
     {
-      name: "Crypto portfoilo",
-      desc: "I Built a platform where yo can track and monitor price actions of crypto currencies",
-      lang: "React.js + Node.js + TailwindCSS",
-      link: "https://coinx-snowy.vercel.app/",
-    },
-    {
+      img: fiverr,
       name: "Fiverr clone",
       desc: "A modern clone of fiverr",
       lang: "HTML + CSS",
-      link: "hhttps://fiverr-clone-tau-sage.vercel.app/",
+      link: "https://fiverr-clone-tau-sage.vercel.app/",
     },
     {
+      img: ritman,
       name: "An event onboarder",
       desc: "Digital site se to monitoer the number of registered participant for an event",
       lang: "TypeScript + Node.js + TailwindCSS",
@@ -67,6 +93,7 @@ export const projects = [
     },
 
     {
+      img: port,
       name: "My Portfolio",
       desc: "Personal portfolio showcasing projects and skills",
       lang: "React.js + Node.js + TailwindCSS",

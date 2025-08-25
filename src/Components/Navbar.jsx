@@ -1,8 +1,28 @@
 import React from 'react'
 import { GhIcon } from './svg';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 const Navbar = () => {
+    
+     const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
+
+  useEffect(() => {
+    setTimeOfDay(getTimeOfDay());
+  }, []);
+
+  function getTimeOfDay() {
+    const now = new Date();
+    const currentHour = now.getHours();
+
+    if (currentHour >= 6 && currentHour < 12) {
+      return "morning";
+    } else if (currentHour >= 12 && currentHour < 18) {
+      return "afternoon";
+    } else {
+      return "evening";
+    }
+  }
     
     return (
         <>
@@ -17,7 +37,14 @@ const Navbar = () => {
                             <div
                                 className={`before:content-['']  text-white font-medium text-[18px] md:text-[25px] lg:hover:before:bg-[#0000]s active:scale-[0.86] transition-all duration-100 before:absolute before:h-1 </span>before:-bottom-1 before:transition-all before:duration-300  "text-black hover:before:w-full" : "text-black/90 hover:before:w-full"} relative`}
                             >
-                                Jeffrey<span></span>
+                                <span 
+                                className={`text-[#fff]   mx-auto text-center font-medium  md:leading-[30px]`}
+                            > 
+                                {timeOfDay === "morning" && <span> Good Morning</span>}
+                                {timeOfDay === "afternoon" && <span> Good Afternoon</span>}
+                                {timeOfDay === "evening" && <span> Good evening</span>}
+                                {/* {timeOfDay === "evening" && <span>somewhere in the metaverse</span>} */}
+                            </span>
                                 <span></span>
                             </div>
                         </Link>
