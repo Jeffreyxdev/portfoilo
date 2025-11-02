@@ -9,7 +9,16 @@ const Skills = () => {
     return (
         <section className="relative py-32 px-4 md:px-8 lg:px-16 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-[#E8EFFA] via-[#130b1c]/80 to-transparent opacity-30" />
-
+              <div 
+        className="absolute inset-0 opacity-90"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+            linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }}
+      />
             <div className="max-w-7xl mx-auto relative">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}

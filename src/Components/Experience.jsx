@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Resume from "./Resume";
-import resumeUrl from "../Assets/jeffrey.pdf";
+import resumeUrl from "../Assets/JEFFREY_AGABAENWERE.pdf";
 import { motion } from "framer-motion";
 
 const Experience = () => {

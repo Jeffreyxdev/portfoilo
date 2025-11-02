@@ -40,7 +40,7 @@ const Footer = () => {
               Jeffrey
               <span className="text-[#000] text-[14px] lg:text-base">
                 {" "}
-                53 BC -
+                -
               </span>{" "}
               <span className="text-[#000] text-[14px] lg:text-base">
                 {new Date().getFullYear()}
@@ -66,7 +66,7 @@ const Footer = () => {
             />
           </motion.a>
           <motion.a
-            href="https://x.com/Jeffreyonsui"
+            href="https://x.com/JeffreyConnect"
             target="_blank"
             rel="noreferrer"
             whileTap={{ scale: 1.1 }}

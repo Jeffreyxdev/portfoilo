@@ -31,7 +31,7 @@ const Contact = () => {
           I can help you design, improve or build the product experience for
           your new or existing products. Feel free to get in touch with me.
         </h3>
-        <h1 className="poppins font-semibold text-xl text-white md:text-[60px] md:leading-[73.8px]">
+        <h1 className="poppins font-semibold text-xl text-black md:text-[60px] md:leading-[73.8px]">
           Need a skilled developer?
         </h1>
 
@@ -50,7 +50,7 @@ const Contact = () => {
             />
           </div>
           <a
-            className={`text-[#fff] font-medium text-base md:text-[20px] md:leading-[30px]`}
+            className={`text-[#000] font-medium text-base md:text-[20px] md:leading-[30px]`}
             href="mailto: agabaenwerejeffrey@gmail.com"
           >
             agabaenwerejeffrey@gmail.com
@@ -64,7 +64,7 @@ const Contact = () => {
           </div>
           <a
             href="tel:+2347045104464"
-            className={`text-[#fff] tex-base font-medium md:text-[20px] md:leading-[30px]`}
+            className={`text-[#000] tex-base font-medium md:text-[20px] md:leading-[30px]`}
           >
             +2347045104464
           </a>
@@ -76,7 +76,7 @@ const Contact = () => {
             />
           </div>
           <p
-            className={`text-[#fff] text-base mx-auto text-center font-medium md:text-[20px] md:leading-[30px]`}
+            className={`text-[#000] text-base mx-auto text-center font-medium md:text-[20px] md:leading-[30px]`}
           >
             {timeOfDay === "morning" && <span>metaverse!</span>}
             {timeOfDay === "afternoon" && <span>localhost:3000</span>}

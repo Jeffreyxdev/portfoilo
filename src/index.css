@@ -16,68 +16,24 @@
 }
 
 html {
-  scrollbar-color: rgb(0, 0, 0, 0.4) rgb(0, 0, 0, 0);
+  scrollbar-color: rgba(8, 8, 8, 0.448) rgba(0, 0, 0, 0.1);
   scrollbar-width: thin;
 }
 
-body {
-  scroll-behavior: auto;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  /* Updated background to match the gradient */
-  background: linear-gradient(to right, #131313, #383838);
-
-  color: rgb(255, 255, 255);
-  font-family: "Poppins", sans-serif;
-  position: relative;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 
-/* Glossy white lines */
-body::after {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: linear-gradient(to right, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 100%);
-  box-shadow: 0 2px 24px 0 rgba(255,255,255,0.18);
-  pointer-events: none;
-  z-index: 1;
-}
+
 .poppins {
   font-family: 'Poppins', sans-serif;
 }
-.font-clashbold {
-  font-family: clashBold;
-  font-weight: bold;
-}
-
-.font-clash {
-  font-family: clash;
-}
-.gradientText {
-  overflow: hidden;
-  background: linear-gradient(to right, #e9e9e9, #ffffff, #546c92);
-  background-clip: text;
-  -webkit-background-clip: text;
-}
-
-
-.gradientText h1 {
-  @apply font-semibold text-[34px] leading-[36.9px] text-[#CFFAFF] md:leading-[45px] md:text-[35px] md:max-w-max lg:leading-[73.8px] lg:max-w-[580px] lg:text-[60px];
-  font-family: clashBold;
-  color: rgba(255, 255, 255, 0);
-  text-transform: capitalize;
-
-}
-
-.gradientText h2 {
-  color: rgba(255, 255, 255, 0);
-  text-transform: capitalize;
-  font-family: clash;
-  @apply flex items-center font-semibold text-white text-[20px] leading-[30.75px] lg:text-[60px] lg:leading-[73.8px];
+ .screen {
+  position: relative;
+  z-index: 1;
 }

@@ -1,12 +1,24 @@
-import React from 'react'
-import { GhIcon } from './svg';
-import { useEffect, useState } from 'react';
-import clsx from 'clsx';
-import { Link } from 'react-router-dom';
-const Navbar = () => {
-    
-     const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Github, Mail  } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+export default function FloatingNavbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+  
+  const navbarY = useTransform(scrollY, [0, 100], [0, -5]);
+  const navbarOpacity = useTransform(scrollY, [0, 50], [0.95, 1]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+ const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
   useEffect(() => {
     setTimeOfDay(getTimeOfDay());
   }, []);
@@ -23,51 +35,86 @@ const Navbar = () => {
       return "evening";
     }
   }
-    
-    return (
-        <>
-            <main className="">
-                <header
-                    className={clsx(
-                        "fixed z-40 top-0 md:relatives bg-gradient-to-r from-[#131313]  to-[#383838] pb-3 w-full pt-[20px] px-[32px] md:py-[30px] lg:px-[80px]"
-                    )}
-                >
-                    <nav className="flex items-center justify-between">
-                        <Link to="/">
-                            <div
-                                className={`before:content-['']  text-white font-medium text-[18px] md:text-[25px] lg:hover:before:bg-[#0000]s active:scale-[0.86] transition-all duration-100 before:absolute before:h-1 </span>before:-bottom-1 before:transition-all before:duration-300  "text-black hover:before:w-full" : "text-black/90 hover:before:w-full"} relative`}
-                            >
-                                <span 
-                                className={`text-[#fff]   mx-auto text-center font-medium  md:leading-[30px]`}
-                            > 
-                                {timeOfDay === "morning" && <span> Good Morning</span>}
-                                {timeOfDay === "afternoon" && <span> Good Afternoon</span>}
-                                {timeOfDay === "evening" && <span> Good evening</span>}
-                                {/* {timeOfDay === "evening" && <span>somewhere in the metaverse</span>} */}
-                            </span>
-                                <span></span>
-                            </div>
-                        </Link>
-                        <div className="text-[#000] group group-hover:text-black transition-all duration-300">
-                            <Link
-                                target="_blank"
-                                rel="noreferrer"
-                                to="https://www.github.com/Jeffreyxdev"
-                                className="group-hover:text-black transition-colors duration-300"
-                            >
-                                <span className="flex items-center gap-[8px] md:gap-[10px]">
-                                    <GhIcon fill={`#1c2c61`} className="w-[26px] h-[26px] md:w-[32px] md:h-[32px] text-black !fill-black duration-300" />
-                                    <p className="font-clash text-[15px] md:text-[18px] font-medium group-shover:text-white transition-colors duration-300">
-                                        github
-                                    </p>
-                                </span>
-                            </Link>
-                        </div>
-                    </nav>
-                </header>
-            </main>
-        </>
-    );
-};
+  return (
+   
+    <>
+      <motion.nav
+        style={{ y: navbarY, opacity: navbarOpacity }}
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
+          scrolled ? 'w-[85%] max-w-3xl' : 'w-[90%] max-w-4xl'
+        }`}
+      >
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className={`
+            backdrop-blur-md bg-white/60 rounded-full
+            border border-white/20 shadow-lg
+            px-6 py-4
+            flex items-center justify-between
+            transition-all duration-300
+            ${scrolled ? 'shadow-xl' : 'shadow-lg'}
+          `}
+        >
+          {/* Logo/Initials */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+            className="cursor-pointer"
+          >
+            <div className="w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center shadow-md">
+              <span className="text-white font-bold text-xl">JA</span>
+            </div>
+          </motion.div>
+          <h2>
+            {timeOfDay === "morning" && <span>Good Morning</span>}
+            {timeOfDay === "afternoon" && <span>Good Afternoon</span>}
+            {timeOfDay === "evening" && <span>Good Evening</span>}</h2>
+          {/* Social Links */}
+          <div className="flex items-center gap-3">
+            <motion.a
+              href="https://github.com/Jeffreyxdev"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-11 h-11 rounded-2xl bg-gray-900 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
+            >
+              <Github className="w-5 h-5 text-white" />
+            </motion.a>
 
-export default Navbar
+            <motion.a
+              href="mailto:agabaenwerejeffrey@gmail.com"
+              whileHover={{ scale: 1.1, rotate: -5 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-11 h-11 rounded-2xl bg-gray-900 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
+            >
+              <Mail className="w-5 h-5 text-white" />
+            </motion.a>
+
+              <motion.a
+              href="https://wa.me/2347045104464"
+              whileHover={{ scale: 1.1, rotate: -5 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-11 h-11 rounded-2xl bg-gray-900 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
+            >
+              <FaWhatsapp className="w-5 h-5 text-white" />
+            </motion.a>
+            
+          </div>
+        </motion.div>
+      </motion.nav>
+
+     
+
+       
+        
+      
+      
+    </>
+  );
+}

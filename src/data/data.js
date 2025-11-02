@@ -10,9 +10,16 @@ import bot from '../Assets/bot.png'
 import sub from '../Assets/sub.png'
 import exla from '../Assets/exla.png'
 import desight from '../Assets/desight.png'
-
+import ekaiva from '../Assets/ekaiva.jpg'
 export const projects = [
 
+  {
+    img: ekaiva,
+    name: "Ekaiva",
+    desc: "Ekaiva is n indian mice organization for travels, connect with others,. It is built with the latest technologies and is designed to be user-friendly and efficient.",
+    lang: "React.js + Node.js + TailwindCSS + TypeScript",
+    link: "https://ekaivaindia.com/",
+  },
   {
     img:apexo,
     name: "ApexoAi",
@@ -32,7 +39,7 @@ export const projects = [
     name: "SUIVER",
     desc: "A cutting edge technolongy I'm working on that swaps crypto directly to local fiats",
     lang: "Node.js + Move + TailwindCSS + JavaScript, reactNative, web3.js",
-    link: "https://suifing.vercel.app/",
+    link: "https://suiver.pxxl.click",
   },
   {
     img: vyral,

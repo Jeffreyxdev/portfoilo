@@ -3,14 +3,15 @@ import { motion } from "framer-motion";
 import {
     Smartphone,
     GitBranch,
-    Palette,
+   
     Cloud,
     Code,
-    SmartphoneIcon,
+    
     Briefcase,
     Server
 } from 'lucide-react';
-
+import { useRef, useEffect } from 'react';
+import * as THREE from 'three';
 const services = [
 {
     id: 1,
@@ -46,15 +47,9 @@ const services = [
     icon: GitBranch,
     category: "Blockchain",
   },
+  
   {
     id: 6,
-    title: "UI & PRODUCT DESIGN",
-    description: "Designing intuitive, elegant interfaces with Figma — blending user psychology, design systems, and startup aesthetics. Every pixel earns its place.",
-    icon: Palette,
-    category: "Design",
-  },
-  {
-    id: 7,
     title: "BOT & SYSTEM AUTOMATION",
     description: "Creating bots that automate workflows, monitor data, and scale efficiently. Architecting intelligent systems to give businesses superpowers.",
     icon: Cloud,
@@ -66,10 +61,98 @@ const services = [
 
 
 const Services = () => {
-    return (
-        <section className="relative py-24 px-4 md:px-8 lg:px-16 overflow-hidden">
-            <div className="absolute inset-0 " />
 
+     const canvasRef = useRef(null);
+    
+      useEffect(() => {
+        if (!canvasRef.current) return;
+    
+        // Three.js Scene Setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ 
+          canvas: canvasRef.current, 
+          alpha: true,
+          antialias: true 
+        });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        camera.position.z = 5;
+    
+        // Create particle system
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 100;
+        const posArray = new Float32Array(particlesCount * 3);
+    
+        for (let i = 0; i < particlesCount * 3; i++) {
+          posArray[i] = (Math.random() - 0.5) * 10;
+        }
+    
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    
+        const particlesMaterial = new THREE.PointsMaterial({
+          size: 0.05,
+          color: '#1B2333',
+          transparent: true,
+          opacity: 0.6,
+          blending: THREE.AdditiveBlending
+        });
+    
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+    
+        // Animation
+        let animationFrameId;
+        const animate = () => {
+          animationFrameId = requestAnimationFrame(animate);
+          
+          particlesMesh.rotation.y += 0.0005;
+          particlesMesh.rotation.x += 0.0003;
+          
+          renderer.render(scene, camera);
+        };
+    
+        animate();
+    
+        // Handle resize
+        const handleResize = () => {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        };
+    
+        window.addEventListener('resize', handleResize);
+    
+        // Cleanup
+        return () => {
+          window.removeEventListener('resize', handleResize);
+          cancelAnimationFrame(animationFrameId);
+          particlesGeometry.dispose();
+          particlesMaterial.dispose();
+          renderer.dispose();
+        };
+      }, []);
+
+    return (
+        <section className="relative w-full  bg-gradient-to-br from-indigo-50 via-blue-50  to-slate-50 overflow-hidden py-20 px-6 md:px-12 lg:px-20">
+           
+               <canvas 
+        ref={canvasRef} 
+        className="absolute inset-0 w-full h-full"
+        style={{ pointerEvents: 'none' }}
+      />
+
+             <div 
+        className="absolute inset-0 opacity-90"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+            linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }}
+      />
             <div className="max-w-7xl mx-auto relative">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
@@ -77,12 +160,12 @@ const Services = () => {
                     viewport={{ once: true }}
                     className="text-left mb-5"
                 >
-                    <h1 className="text-2xl poppins md:text-3xl font-medium text-white mb-6 tracking-tight">
+                    <h1 className="text-2xl poppins md:text-3xl font-medium text-black mb-6 tracking-tight">
                         Skills
                         
                     </h1>
                     <div className="h-1 w-24 bg-gradient-to-r from-blue-800 to-blue-500 mb-6" />
-                    <p className="text-[#fff] text-base md:text-l ">
+                    <p className="text-black text-base md:text-l ">
                         Specialized in multiple domains of software engineering
                     </p>
                 </motion.div>
