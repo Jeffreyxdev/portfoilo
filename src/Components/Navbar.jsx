@@ -70,7 +70,7 @@ export default function FloatingNavbar() {
               <span className="text-white font-bold text-xl">JA</span>
             </div>
           </motion.div>
-          <h2 className="lg:text-3xl sm:text-xl p-3 font-bold text-transparent bg-clip-text bg-purple-300  transition-all duration-700">
+          <h2 className="lg:text-3xl sm:text-xl p-3 font-bold text-transparent bg-clip-text bg-blue-400  transition-all duration-700">
   {timeOfDay === "morning" && <span> Good Morning</span>}
   {timeOfDay === "afternoon" && <span> Good Afternoon</span>}
   {timeOfDay === "evening" && <span> Good Evening</span>}
