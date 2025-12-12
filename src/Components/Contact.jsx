@@ -64,7 +64,7 @@ const Contact = () => {
           </div>
           <a
             href="tel:+2347045104464"
-            className={`text-[#000] tex-base font-medium md:text-[20px] md:leading-[30px]`}
+            className={`text-[#fff] tex-base font-medium md:text-[20px] md:leading-[30px]`}
           >
             +2347045104464
           </a>
@@ -76,7 +76,7 @@ const Contact = () => {
             />
           </div>
           <p
-            className={`text-[#000] text-base mx-auto text-center font-medium md:text-[20px] md:leading-[30px]`}
+            className={`text-[#fff] text-base mx-auto text-center font-medium md:text-[20px] md:leading-[30px]`}
           >
             {timeOfDay === "morning" && <span>metaverse!</span>}
             {timeOfDay === "afternoon" && <span>localhost:3000</span>}

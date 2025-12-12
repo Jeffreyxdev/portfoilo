@@ -48,6 +48,13 @@ export const projects = [
     lang: "React.js + Node.js + TailwindCSS + TypeScript",
     link: "https://vyral-seven.vercel.app/",
   },
+  {
+    img: vyral,
+    name: "vyral",
+    desc: "A web3 social media platform that allows creators to share and discover content, connect with others, and engage in discussions. It is built with the latest technologies and is designed to be user-friendly and efficient.",
+    lang: "React.js + Node.js + TailwindCSS + TypeScript",
+    link: "https://vyral-seven.vercel.app/",
+  },
     {
       img: bot,
       name: "Trading bot",
