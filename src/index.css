@@ -5,15 +5,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@font-face {
-  font-family: clash;
-  src: url("Assets/fonts/ClashDisplay-Regular.otf") format("opentype");
-}
-
-@font-face {
-  font-family: clashBold;
-  src: url("/Assets/fonts/ClashDisplay-Semibold.otf") format("opentype");
-}
 
 html {
   scrollbar-color: rgba(8, 8, 8, 0.448) rgba(0, 0, 0, 0.1);
