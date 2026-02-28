@@ -1,32 +1,27 @@
+import Hero from './Components/Hero';
+import About from './Components/About';
+import Projects from './Components/Projects';
+import Services from './Components/Services';
+import Reviews from './Components/Reviews';
+import Contact from './Components/Contact';
+import Navbar from './Components/Navbar';
+import Skills from './Components/Skills';
+import Footer from './Components/Footer';
 
-import Hero from "./Components/Hero"
-import React from "react"
-import Projects from "./Components/Projects"
-import Services from "./Components/Services"
-
-import Contact from "./Components/Contact"
-import Navbar from "./Components/Navbar"
-import Skills from "./Components/Skills"
-import Footer from "./Components/Footer"
-// import ParticlesBackground from "./Components/ParticlesBackground"
 function App() {
-  
-
   return (
     <>
-
-  <Navbar/>
-    {/* <ParticlesBackground/> */}
-      <Hero/>
-      <Services/>
-      <Projects/>
-      <Skills/>
-      
-      <Contact/>
-      <Footer/>
-    
+      <Navbar />
+      <Hero />
+      <About />
+      <Services />
+      <Projects />
+      <Reviews />
+      <Skills />
+      <Contact />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

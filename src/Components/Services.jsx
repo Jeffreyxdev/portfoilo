@@ -1,217 +1,127 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import {
-    Smartphone,
-    GitBranch,
-   
-    Cloud,
-    Code,
-    
-    Briefcase,
-    Server
+  Smartphone, GitBranch, Cloud, Code, Briefcase, Server
 } from 'lucide-react';
-import { useRef, useEffect } from 'react';
-import * as THREE from 'three';
+
 const services = [
-{
-    id: 1,
-    title: "FOUNDER-LEVEL STRATEGY",
-    description: "Leading end-to-end product cycles from idea to MVP to growth. I think in terms of markets, users, distribution, and long-term defensibility.",
-    icon: Briefcase, // swap in your preferred icon for "founder/strategy"
-    category: "Leadership",
+  {
+    id: 1, title: 'Founder-Level Strategy',
+    description: 'Leading end-to-end product cycles from idea to MVP to growth. I think in terms of markets, users, distribution, and long-term defensibility.',
+    icon: Briefcase,
   },
   {
-    id: 2,
-    title: "BACKEND DEVELOPMENT",
-    description: "Designing and engineering scalable backend systems with Node.js and Python. From API architecture to data modeling, I ensure infrastructure that supports real-world growth and scale.",
+    id: 2, title: 'Backend Development',
+    description: 'Designing scalable backend systems with Node.js and Python. From API architecture to data modeling, ensuring infrastructure that supports real-world growth.',
     icon: Server,
-    category: "Development",
-  },  {
-    id: 3,
-    title: "FRONTEND DEVELOPMENT",
-    description: "Building modern, responsive web interfaces using React, Next.js, and TypeScript. Focused on performance, scalability, and exceptional user experience — with a product mindset at the core.",
+  },
+  {
+    id: 3, title: 'Frontend Development',
+    description: 'Building modern, responsive web interfaces using React, Next.js, and TypeScript. Focused on performance, scalability, and exceptional user experience.',
     icon: Code,
-    category: "Development",
   },
   {
-    id: 4,
-    title: "APP DEVELOPMENT",
-    description: "Delivering cross-platform mobile and desktop applications that merge design and functionality. Shipping real products, not just prototypes — fast, clean, and user-focused.",
+    id: 4, title: 'App Development',
+    description: 'Delivering cross-platform mobile and desktop applications that merge design and functionality. Shipping real products — fast, clean, and user-focused.',
     icon: Smartphone,
-    category: "Mobile",
   },
   {
-    id: 5,
-    title: "SMART CONTRACT DEVELOPMENT",
-    description: "Deploying secure, efficient smart contracts on the Sui blockchain using Move. Deeply involved in the Sui ecosystem as both a builder and community voice.",
+    id: 5, title: 'Smart Contracts',
+    description: 'Deploying secure, efficient smart contracts on the Sui blockchain using Move. Deeply involved in the Sui ecosystem as both a builder and community voice.',
     icon: GitBranch,
-    category: "Blockchain",
   },
-  
   {
-    id: 6,
-    title: "BOT & SYSTEM AUTOMATION",
-    description: "Creating bots that automate workflows, monitor data, and scale efficiently. Architecting intelligent systems to give businesses superpowers.",
+    id: 6, title: 'Bot & Automation',
+    description: 'Creating bots that automate workflows, monitor data, and scale efficiently. Architecting intelligent systems to give businesses superpowers.',
     icon: Cloud,
-    category: "Infrastructure",
   },
-  
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 40, filter: 'blur(8px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: [0.25, 0.1, 0.25, 1] } },
+};
 
 const Services = () => {
+  return (
+    <section className="relative overflow-hidden" style={{ background: 'var(--bg-primary)', paddingTop: '96px', paddingBottom: '96px' }}>
+      {/* Cloud orb */}
+      <div className="cloud-orb cloud-orb-lg" style={{ top: '-20%', left: '-10%', animationDelay: '3s' }} />
 
-     const canvasRef = useRef(null);
-    
-      useEffect(() => {
-        if (!canvasRef.current) return;
-    
-        // Three.js Scene Setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ 
-          canvas: canvasRef.current, 
-          alpha: true,
-          antialias: true 
-        });
-        
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        camera.position.z = 5;
-    
-        // Create particle system
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 100;
-        const posArray = new Float32Array(particlesCount * 3);
-    
-        for (let i = 0; i < particlesCount * 3; i++) {
-          posArray[i] = (Math.random() - 0.5) * 10;
-        }
-    
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    
-        const particlesMaterial = new THREE.PointsMaterial({
-          size: 0.05,
-          color: '#1B2333',
-          transparent: true,
-          opacity: 0.6,
-          blending: THREE.AdditiveBlending
-        });
-    
-        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particlesMesh);
-    
-        // Animation
-        let animationFrameId;
-        const animate = () => {
-          animationFrameId = requestAnimationFrame(animate);
-          
-          particlesMesh.rotation.y += 0.0005;
-          particlesMesh.rotation.x += 0.0003;
-          
-          renderer.render(scene, camera);
-        };
-    
-        animate();
-    
-        // Handle resize
-        const handleResize = () => {
-          camera.aspect = window.innerWidth / window.innerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
-        };
-    
-        window.addEventListener('resize', handleResize);
-    
-        // Cleanup
-        return () => {
-          window.removeEventListener('resize', handleResize);
-          cancelAnimationFrame(animationFrameId);
-          particlesGeometry.dispose();
-          particlesMaterial.dispose();
-          renderer.dispose();
-        };
-      }, []);
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
 
-    return (
-        <section className="relative w-full  bg-gradient-to-br from-indigo-50 via-blue-50  to-slate-50 overflow-hidden py-20 px-6 md:px-12 lg:px-20">
-           
-               <canvas 
-        ref={canvasRef} 
-        className="absolute inset-0 w-full h-full"
-        style={{ pointerEvents: 'none' }}
-      />
+        <motion.div
+          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          style={{ marginBottom: '56px' }}
+        >
+          <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', display: 'block', marginBottom: '16px' }}>
+            How Can I Help?
+          </span>
+          <h2 style={{ fontFamily: 'clashBold, "Poppins", sans-serif', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.15, letterSpacing: '-0.02em', marginBottom: '16px' }}>
+            Skills &amp; Services.
+          </h2>
+          <div style={{ height: '2px', width: '48px', background: 'linear-gradient(90deg, var(--accent), transparent)' }} />
+        </motion.div>
 
-             <div 
-        className="absolute inset-0 opacity-90"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #e5e7eb 1px, transparent 1px),
-            linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px'
-        }}
-      />
-            <div className="max-w-7xl mx-auto relative">
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-left mb-5"
-                >
-                    <h1 className="text-2xl poppins md:text-3xl font-medium text-black mb-6 tracking-tight">
-                        Skills
-                        
-                    </h1>
-                    <div className="h-1 w-24 bg-gradient-to-r from-blue-800 to-blue-500 mb-6" />
-                    <p className="text-black text-base md:text-l ">
-                        Specialized in multiple domains of software engineering
-                    </p>
-                </motion.div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service) => (
-                        <motion.div
-                            key={service.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.3, delay: service.id * 0.05 }}
-
-                            whileHover={{
-                                scale: 1.02,
-                                translateY: -5,
-                                boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
-                            }}
-                            className="group relative bg-[#000]/90 backdrop-blur-lg rounded-2xl overflow-hidden border border-[#ffffff10]"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                            <div className="relative p-8">
-                                <div className="flex items-center justify-between mb-6">
-                                    <span className="text-3xl transform group-hover:scale-110 transition-transform duration-300">
-                                        <service.icon className="w-8 h-8 text-[#fff]" strokeWidth={1.5} />
-                                    </span>
-                                    <div className="h-px w-16 bg-gradient-to-r from-purple-500 to-blue-500 opacity-50" />
-                                </div>
-
-                                <h3 className="text-white text-xl  font-clashbold mb-4 tracking-wide">
-                                    {service.title}
-                                </h3>
-
-                                <p className="text-[#FFFFFF99] text-sm leading-relaxed">
-                                    {service.description}
-                                </p>
-                            </div>
-
-                            <div className="h-[2px] w-full bg-gradient-to-r from-purple-500/50 to-blue-500/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                        </motion.div>
-                    ))}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}
+          className="services-grid"
+        >
+          {services.map((service) => (
+            <motion.div key={service.id} variants={itemVariants}>
+              <div style={{
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: '20px',
+                padding: '28px',
+                height: '100%',
+                transition: 'border-color 0.4s ease, background 0.4s ease, transform 0.4s ease',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+                className="service-card"
+              >
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--accent-muted)', border: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                  <service.icon size={20} style={{ color: 'var(--text-primary)' }} strokeWidth={1.5} />
                 </div>
-            </div>
-        </section>
-    );
+                <h3 style={{ color: 'var(--text-primary)', fontSize: '15px', fontWeight: 600, marginBottom: '10px', lineHeight: 1.35 }}>
+                  {service.title}
+                </h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.7 }}>
+                  {service.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <style>{`
+          @media (max-width: 640px) {
+            .services-grid { grid-template-columns: 1fr !important; }
+          }
+          @media (min-width: 641px) and (max-width: 1023px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          }
+          .service-card:hover {
+            border-color: var(--border-hover) !important;
+            background: var(--bg-card-hover) !important;
+            transform: translateY(-2px);
+          }
+        `}</style>
+      </div>
+    </section>
+  );
 };
 
 export default Services;

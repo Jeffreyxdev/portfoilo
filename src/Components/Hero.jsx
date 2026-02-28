@@ -1,187 +1,142 @@
-import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import * as THREE from 'three';
-import { ChevronDown } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
+
+const etherealTransition = {
+  duration: 1.2,
+  ease: [0.25, 0.1, 0.25, 1],
+};
 
 export default function Hero() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    if (!canvasRef.current) return;
-
-    // Three.js Scene Setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
-      canvas: canvasRef.current, 
-      alpha: true,
-      antialias: true 
-    });
-    
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    camera.position.z = 5;
-
-    // Create particle system
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 100;
-    const posArray = new Float32Array(particlesCount * 3);
-
-    for (let i = 0; i < particlesCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 10;
-    }
-
-    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-
-    const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.05,
-      color: '#1B2333',
-      transparent: true,
-      opacity: 0.6,
-      blending: THREE.AdditiveBlending
-    });
-
-    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-    scene.add(particlesMesh);
-
-    // Animation
-    let animationFrameId;
-    const animate = () => {
-      animationFrameId = requestAnimationFrame(animate);
-      
-      particlesMesh.rotation.y += 0.0005;
-      particlesMesh.rotation.x += 0.0003;
-      
-      renderer.render(scene, camera);
-    };
-
-    animate();
-
-    // Handle resize
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-      particlesGeometry.dispose();
-      particlesMaterial.dispose();
-      renderer.dispose();
-    };
-  }, []);
-
-  const skills = ['React.js','Move(sui)','C++', 'Next.js', 'TypeScript', 'Python','JavaScript','Node.js','AI','Three.js'];
+  const scrollToProjects = () => {
+    const el = document.querySelector('#projects');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <div className="relative w-full h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 overflow-hidden">
-      {/* Three.js Canvas */}
-      <canvas 
-        ref={canvasRef} 
-        className="absolute inset-0 w-full h-full"
-        style={{ pointerEvents: 'none' }}
-      />
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+      style={{ background: 'var(--bg-primary)' }}
+    >
+      {/* Ethereal cloud orbs */}
+      <div className="cloud-orb cloud-orb-lg" style={{ top: '-15%', left: '50%', transform: 'translateX(-50%)' }} />
+      <div className="cloud-orb cloud-orb-md" style={{ bottom: '10%', left: '-5%', animationDelay: '2s' }} />
+      <div className="cloud-orb cloud-orb-sm" style={{ top: '30%', right: '-3%', animationDelay: '4s' }} />
 
-      {/* Grid Background */}
-      <div 
-        className="absolute inset-0 opacity-90"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #e5e7eb 1px, transparent 1px),
-            linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px'
-        }}
-      />
+      {/* Dot pattern */}
+      <div className="absolute inset-0 dot-pattern" style={{ opacity: 0.4 }} />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 md:px-12 flex flex-col items-center text-center pt-28 pb-20">
+
+        {/* Available badge */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center"
+          initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ ...etherealTransition, delay: 0.2 }}
+          className="mb-12"
         >
-          {/* Name */}
-          <motion.h1 
-            className="text-5xl md:text-5xl lg:text-7xl sm:text-5xl font-semibold mb-6 mx-auto p-2"
+          <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-medium tracking-[0.12em] uppercase"
             style={{
-              background: 'linear-gradient(135deg, #1B1433 0%, #1B2333 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Jeffrey Agabaenwere
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            className="text-xl md:text-3xl text-gray-600 mb-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Software Engineer
-          </motion.p>
-
-          {/* Skills Pills */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            {skills.map((skill, index) => (
-              <motion.span
-                key={skill}
-                className="px-6 py-3 bg-white/60 backdrop-blur-sm text-blue-600 rounded-full text-sm md:text-base font-medium shadow-sm border border-blue-100"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: 0.8 + (index * 0.1),
-                  ease: 'easeOut'
-                }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                  transition: { duration: 0.2 }
-                }}
-              >
-                {skill}
-              </motion.span>
-            ))}
-          </motion.div>
+              border: '1px solid var(--border-subtle)',
+              background: 'var(--bg-glass)',
+              color: 'var(--text-secondary)',
+            }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" style={{ boxShadow: '0 0 8px #34d399' }} />
+            Available for new projects
+          </span>
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Headline — Neue Machina font */}
         <motion.div
-          className="absolute bottom-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          initial={{ opacity: 0, y: 50, scale: 0.96, filter: 'blur(16px)' }}
+          animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 1.4, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mb-10"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ 
-              duration: 1.5, 
-              repeat: Infinity,
-              ease: 'easeInOut'
-            }}
-          >
-            <ChevronDown className="w-8 h-8 text-gray-400" />
-          </motion.div>
+          <h1 className="leading-none tracking-tight" style={{ fontFamily: '"Neue Machina", clashBold, "Poppins", sans-serif' }}>
+            <span className="block font-black text-white"
+              style={{ fontSize: 'clamp(48px, 11vw, 120px)', letterSpacing: '-0.04em', fontWeight: 700 }}>
+              BUILDING
+            </span>
+            <span className="block"
+              style={{
+                fontSize: 'clamp(36px, 8vw, 88px)',
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                fontStyle: 'italic',
+                fontWeight: 300,
+                color: 'var(--text-secondary)',
+                lineHeight: 1.1,
+                margin: '4px 0',
+              }}>
+              Seamless
+            </span>
+            <span className="block font-black text-white"
+              style={{ fontSize: 'clamp(48px, 11vw, 120px)', letterSpacing: '-0.04em', fontWeight: 700, fontFamily: '"Neue Machina", clashBold, "Poppins", sans-serif' }}>
+              PROJECTS
+            </span>
+          </h1>
+        </motion.div>
+
+        {/* Services */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ ...etherealTransition, delay: 0.8 }}
+          className="mb-8"
+        >
+          <p style={{ fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 500 }}>
+            Mobile Apps
+            <span style={{ margin: '0 12px', opacity: 0.3 }}>•</span>
+            Websites
+            <span style={{ margin: '0 12px', opacity: 0.3 }}>•</span>
+            AI Automation
+            <span style={{ margin: '0 12px', opacity: 0.3 }}>•</span>
+            Bots
+          </p>
+        </motion.div>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ ...etherealTransition, delay: 1.0 }}
+          className="mb-12 max-w-sm md:max-w-md"
+          style={{ fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)' }}
+        >
+          I craft solid, scalable digital products with exceptional user experiences — from concept to deployment.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ ...etherealTransition, delay: 1.2 }}
+          className="flex items-center gap-3"
+        >
+          <a href="https://wa.me/2347045104464" target="_blank" rel="noopener noreferrer" className="btn-primary">
+            Book a Discovery Call
+          </a>
+          <button onClick={scrollToProjects} className="btn-outline">
+            View Work
+          </button>
         </motion.div>
       </div>
-    </div>
+
+      {/* Scroll hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ArrowDown style={{ width: '18px', height: '18px', color: 'var(--text-muted)' }} />
+        </motion.div>
+      </motion.div>
+    </section>
   );
 }

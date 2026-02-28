@@ -1,173 +1,292 @@
-import React from 'react'
-
-import Resume from "./Resume";
-import resumeUrl from "../Assets/JEFFREY_AGABAENWERE.pdf";
-import { motion } from "framer-motion";
+import Resume from './Resume';
+import resumeUrl from '../Assets/JEFFREY_AGABAENWERE.pdf';
+import { motion } from 'framer-motion';
 
 const Experience = () => {
+  const experiences = [
+    {
+      title: 'Frontend Developer',
+      company: 'Desight Foundation',
+      location: 'Port Harcourt, Nigeria',
+      period: '2025 — Present',
+      type: 'Full-time',
+      description: [
+        'Leading development of a Progressive Web App for Africa\'s eye care initiative — serving thousands of patients',
+        'Implementing responsive, mobile-first design with modern frontend architecture and performance optimization',
+        'Collaborating with government organizations and NGO teams to deliver accessible healthcare technology',
+        'Building scalable frontend systems connecting multiple platforms and donation panels'
+      ]
+    },
+    {
+      title: 'CTO & Full-Stack Developer',
+      company: 'Lemren',
+      location: 'Remote / Nigeria',
+      period: '2025 — Present',
+      type: 'Co-Founder',
+      description: [
+        'Spearheading technical vision and product architecture for a decentralized car-sharing platform revolutionizing mobility in Africa',
+        'Building full-stack infrastructure with Next.js, Firebase, and modern design systems',
+        'Architecting multi-provider authentication flows (Google, Email, Phone) and scalable database structures',
+        'Driving product strategy, market positioning, and go-to-market execution alongside founding team'
+      ]
+    },
+    {
+      title: 'Lead Developer',
+      company: 'ApexoAI',
+      location: 'Remote',
+      period: '2024 — Present',
+      type: 'Project Lead',
+      description: [
+        'Built an AI-powered job hunting agent from scratch — automating resume generation, email drafting, and career optimization',
+        'Designed and shipped production-ready Next.js application with GPT-4 Turbo integration',
+        'Implemented intelligent tool-calling architecture for email drafts, CV optimization, and job matching',
+        'Achieved 30% workflow efficiency improvement for early adopters'
+      ]
+    },
+    {
+      title: 'Full-Stack Developer',
+      company: 'Ekaiva India',
+      location: 'Remote / India',
+      period: '2024 — Present',
+      type: 'Contract',
+      description: [
+        'Developed a comprehensive MICE (Meetings, Incentives, Conferences, Exhibitions) platform for India\'s travel industry',
+        'Built end-to-end with React.js, Node.js, and TypeScript — handling high concurrent user loads',
+        'Implemented real-time booking systems, user dashboards, and content management features',
+        'Integrated payment processing and third-party APIs for seamless user experience'
+      ]
+    },
+    {
+      title: 'Front-end Supervisor',
+      company: 'Autosquare',
+      location: 'Florida, USA',
+      period: '2024 — Present',
+      type: 'Remote',
+      description: [
+        'Supervised and revamped frontend infrastructure for a car parts dealership platform',
+        'Designed RESTful APIs for seamless inventory management and event booking systems',
+        'Optimized database queries and frontend rendering for handling high-volume traffic'
+      ]
+    },
+    {
+      title: 'Fullstack Developer & CEO',
+      company: 'Suifi.ng',
+      location: 'Port Harcourt, Nigeria',
+      period: '2023 — Present',
+      type: 'Founder',
+      description: [
+        'Founded and lead a digital solutions agency delivering tailored web and mobile applications',
+        'Managing end-to-end product development — from client discovery to deployment and iteration',
+        'Overseeing company operations, team coordination, and strategic growth initiatives'
+      ]
+    },
+    {
+      title: 'Smart Contract Developer',
+      company: 'Suiver',
+      location: 'Remote',
+      period: '2024 — Present',
+      type: 'Project',
+      description: [
+        'Architecting a cutting-edge crypto-to-local-fiat swap protocol on the Sui blockchain',
+        'Writing secure smart contracts in Move language with comprehensive testing coverage',
+        'Building cross-platform mobile frontend with React Native and Web3.js integration',
+        'Pioneering direct fiat off-ramp solutions for African markets'
+      ]
+    },
+    {
+      title: 'Full-Stack Developer',
+      company: 'Vyral',
+      location: 'Remote',
+      period: '2024',
+      type: 'Project',
+      description: [
+        'Built a Web3 social media platform enabling creators to share content and engage in decentralized discussions',
+        'Developed with React.js, Node.js, and TypeScript — focusing on real-time interactions and scalability',
+        'Implemented blockchain-based content ownership and creator monetization features'
+      ]
+    },
+    {
+      title: 'Frontend Developer',
+      company: 'Exla',
+      location: 'Remote',
+      period: '2024',
+      type: 'Project',
+      description: [
+        'Designed and built a modern concert ticket marketplace for artists and event organizers',
+        'Created intuitive discovery flows, ticketing UI, and artist dashboard with React.js',
+        'Implemented responsive design across devices with smooth animations and transitions'
+      ]
+    },
+    {
+      title: 'Tech Tutor & Mentor',
+      company: 'Independent',
+      location: 'Port Harcourt, Nigeria',
+      period: '2023 — Present',
+      type: 'Part-time',
+      description: [
+        'Mentoring aspiring developers in frontend/backend fundamentals and modern design principles',
+        'Teaching practical skills in React, Node.js, and full-stack development workflows',
+        'Guiding students from first lines of code to deploying production applications'
+      ]
+    }
+  ];
+
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1 } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40, filter: 'blur(8px)' },
+    visible: {
+      opacity: 1, y: 0, filter: 'blur(0px)',
+      transition: { duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }
+    },
+  };
+
   return (
-    <section className="relative pt-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#130b1c]/80 to-transparent opacity-30 rounded-2xl" />
+    <div className="relative overflow-hidden">
+      {/* Cloud orb */}
+      <div className="cloud-orb cloud-orb-md" style={{ top: '15%', left: '-10%', animationDelay: '2s' }} />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <span className="text-[#6f1cd7] text-sm tracking-[0.25em] uppercase mb-4 block font-medium">Experience</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl   poppins font-clashbold text-white mb-6 tracking-tight">
-            Professional Journey
-          </h2>
-          <div className="h-[2px] w-24 bg-gradient-to-r from-[#6f1cd7] to-transparent mb-8" />
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+        className="mb-14"
+        style={{ position: 'relative', zIndex: 1 }}
+      >
+        <span className="text-xs font-medium tracking-[0.25em] uppercase mb-4 block" style={{ color: 'var(--text-primary)' }}>
+          Experience
+        </span>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight" style={{ fontFamily: 'clashBold, sans-serif' }}>
+          Professional Journey.
+        </h2>
+        <div className="h-[2px] w-16 mt-4" style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0.6), transparent)' }} />
+      </motion.div>
 
-        <div className="relative">
-          <div className="absolute left-0 md:left-12 top-0 w-[1px] h-full bg-gradient-to-b from-[#6f2cd7]/40 via-[#f8c3]/20 to-transparent rounded-2xl" />
-
-          <div className="space-y-12">
-            {[
-              {
-                title: "Frontend Developer",
-                company: "Desight foundation",
-                location: "Port harcourt, Nigeria",
-                period: "2025 - Present",
-                description: [
-                  "Leading the development of a Progressive Web App (PWA) sturctured website, donation panel",
-                  "Implementing responsive and mobile-first design principles with modern frontend technologies",
-                  "Collaborating with the organizations and government teams to deliver high-performance eye care services for Africa",
-                  "Building scalable frontend architecture for multiple interconnected platforms"
-                ]
-              },
-              {
-                 title: "CTO & Full-Stack Developer",
-                    company: "Lemren",
-                    location: "Remote / Nigeria",
-                    period: "2025 - Present",
-                    description: [
-                      "Spearheading the technical vision and product architecture for Lemren — a decentralized car-sharing platform revolutionizing mobility in Africa",
-                      "Leading frontend and backend development using Next.js, Firebase, and modern design systems to deliver a seamless car rental experience",
-                      "Integrating authentication flows (Google, Email, Phone) and scalable database structure to support user onboarding and real-time availability",
-                      "Collaborating with the founding team on product strategy, market positioning, and go-to-market execution",
-                      "Ensuring secure, efficient deployment and CI/CD pipelines to maintain rapid iteration and production stability"
-                    ]
-                  }     
-,
-              {
-                title: "Fullstack Developer & CEO",
-                company: "Suifi.ng",
-                location: "PH, Nigeria",
-                period: "2023 - Present",
-                description: [
-                  "Led the development and implementation of innovative web solutions.",
-                  "Managed both frontend and backend aspects of projects.",
-                  "Oversaw company operations and strategic decision-making as CEO.",
-                  "Implementing a new world breaking solution the world is yet to see"
-                ]
-              },
-              {
-                title: "Front-end supervisor",
-                company: "Autosquare",
-                location: "Florida",
-                period: "2024 - Present",
-                description: [
-                  "superviesed and reviewed frontend infrastructure for a car part dealership company.",
-                  "Designed and implemented APIs for seamless event booking and management.",
-                  "Optimized database performance for handling high-volume."
-                ]
-              },
-              {
-                title: "Backend Developer",
-                company: "",
-                location: "Remote",
-                period: "2022 - 2023",
-                description: [
-                  "Developed robust backend systems for healthcare applications.",
-                  "Implemented secure data management solutions for sensitive medical information.",
-                  "Collaborated with frontend teams to ensure seamless integration."
-                ]
-              },
-              {
-                title: "Tech tutor",
-                company: "",
-                location: "PH, Nigeria",
-                period: "2023 - Present",
-                description: [
-                  "Taught student the concepts of designing",
-                  "Implement innovative technology solutions to enhance learning experiences.",
-                  "Manage IT staff and ensure alignment with educational goals."
-                ]
-              }
-            ].map((experience, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative pl-6 md:pl-24"
-              >
-                <motion.div
-                  className="absolute left-0 top-3 transform -translate-x-1/2"
-                  whileHover={{ scale: 1.2 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="w-5 h-5 rounded-full bg-[#130b1c] border-2 border-[#6f1cd7] shadow-lg shadow-[#6f1cd7]/20" />
-                </motion.div>
-
-                <motion.div
-                  whileHover={{
-                    scale: 1.02,
-                    backgroundColor: 'rgba(111, 28, 215, 0.08)'
-                  }}
-                  className="group relative bg-[#130b1c]/60 backdrop-blur-sm border border-[#ffffff08] p-8 rounded-sm transition-all duration-500"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#6f1cd7]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                  <div className="relative z-10">
-                    <h3 className="text-2xl md:text-3xl font-clashbold text-white mb-3">
-                      {experience.title}
-                    </h3>
-                    <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-6">
-                      <p className="text-[#fff] font-medium tracking-wide">{experience.company}</p>
-                      <div className="flex items-center gap-4">
-                        <span className="hidden md:inline text-[#fff]">•</span>
-                        <span className="text-[#fff] text-sm">{experience.location}</span>
-                        <span className="text-[#fff]">•</span>
-                        <span className="text-[#fff] text-sm tracking-wider">{experience.period}</span>
-                      </div>
-                    </div>
-                    <ul className="space-y-3">
-                      {experience.description.map((item, i) => (
-                        <li key={i} className="text-[#fff] leading-relaxed font-light flex items-start">
-                          <span className="text-[#fff] mr-3 mt-1.5">•</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-
+      {/* Card Grid Layout */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="experience-grid"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '16px',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
+        {experiences.map((exp, index) => (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-20 pl-16 md:pl-24 text-white"
-            
+            key={index}
+            variants={cardVariants}
           >
-            <Resume
-              pdfUrl={resumeUrl}
-              fileName="Jeffery Agabaenwere.pdf"
-              buttonText="Download Resume"
-            />
+            <div
+              className="experience-card"
+              style={{
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: '20px',
+                padding: '28px',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'border-color 0.4s ease, transform 0.4s ease, background 0.4s ease',
+              }}
+            >
+              {/* Header row */}
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '16px' }}>
+                <div>
+                  <h3 style={{ color: 'var(--text-primary)', fontSize: '16px', fontWeight: 600, lineHeight: 1.3, marginBottom: '4px' }}>
+                    {exp.title}
+                  </h3>
+                  {exp.company && (
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '14px', fontWeight: 500 }}>
+                      {exp.company}
+                    </p>
+                  )}
+                </div>
+                <span
+                  style={{
+                    fontSize: '10px',
+                    fontWeight: 600,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: 'var(--text-muted)',
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: '100px',
+                    padding: '4px 10px',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                  }}
+                >
+                  {exp.type}
+                </span>
+              </div>
+
+              {/* Meta */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{exp.location}</span>
+                <span style={{ fontSize: '12px', color: 'var(--text-muted)', opacity: 0.4 }}>•</span>
+                <span style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>{exp.period}</span>
+              </div>
+
+              {/* Description */}
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1 }}>
+                {exp.description.map((item, i) => (
+                  <li key={i} style={{
+                    color: 'var(--text-secondary)',
+                    fontSize: '13px',
+                    lineHeight: 1.7,
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    marginBottom: i < exp.description.length - 1 ? '8px' : 0,
+                  }}>
+                    <span style={{ marginRight: '10px', marginTop: '2px', opacity: 0.25, color: 'var(--text-primary)', fontSize: '8px' }}>●</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
-        </div>
-      </div>
-    </section>
+        ))}
+      </motion.div>
+
+      {/* Resume Download */}
+      <motion.div
+        initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        className="mt-12"
+        style={{ position: 'relative', zIndex: 1 }}
+      >
+        <Resume
+          pdfUrl={resumeUrl}
+          fileName="Jeffrey Agabaenwere.pdf"
+          buttonText="Download Resume"
+        />
+      </motion.div>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .experience-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        .experience-card:hover {
+          border-color: var(--border-hover) !important;
+          background: var(--bg-card-hover) !important;
+          transform: translateY(-2px);
+        }
+      `}</style>
+    </div>
   );
 };
 

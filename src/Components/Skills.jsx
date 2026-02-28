@@ -1,73 +1,68 @@
-import React from 'react'
-import Experience from "./Experience";
-import { motion } from "framer-motion";
-import { skills } from "../data/data";
+import Experience from './Experience';
+import { motion } from 'framer-motion';
+import { skills } from '../data/data';
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.03 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 16, filter: 'blur(4px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+};
 
 const Skills = () => {
+  return (
+    <section id="skills" className="relative overflow-hidden" style={{ background: 'var(--bg-secondary)', paddingTop: '96px', paddingBottom: '96px' }}>
+      {/* Cloud orb */}
+      <div className="cloud-orb cloud-orb-md" style={{ top: '20%', right: '-8%', animationDelay: '1s' }} />
 
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
 
-    return (
-        <section className="relative py-32 px-4 md:px-8 lg:px-16 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#E8EFFA] via-[#130b1c]/80 to-transparent opacity-30" />
-              <div 
-        className="absolute inset-0 opacity-90"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #e5e7eb 1px, transparent 1px),
-            linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px'
-        }}
-      />
-            <div className="max-w-7xl mx-auto relative">
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-20"
-                >
-                    <span className="text-[#6f1cd7] text-sm tracking-[0.2em] uppercase mb-4 block font-medium">Expertise</span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-clashbold text-black mb-6 tracking-tight">
-                        Technical Proficiency
-                    </h2>
-                    <div className="h-[1px] w-16 bg-[#6f1cd7] opacity-50 mb-8" />
-                    <p className="text-[#000] text-lg max-w-2xl font-light leading-relaxed">
-                        A comprehensive toolkit refined through years of practical experience
-                    </p>
-                </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          style={{ marginBottom: '48px' }}
+        >
+          <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-primary)', display: 'block', marginBottom: '16px' }}>
+            Expertise
+          </span>
+          <h2 style={{ fontFamily: 'clashBold, "Poppins", sans-serif', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.15, letterSpacing: '-0.02em', marginBottom: '16px' }}>
+            Technical Proficiency.
+          </h2>
+          <div style={{ height: '2px', width: '48px', background: 'linear-gradient(90deg, rgba(255,255,255,0.6), transparent)', marginBottom: '16px' }} />
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.7, maxWidth: '480px' }}>
+            A comprehensive toolkit refined through years of practical experience
+          </p>
+        </motion.div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    {skills.map((skill, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                             whileHover={{
-                                scale: 1.02,
-                                translateY: -5,
-                                boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
-                            }}
-                            className="group relative bg-[#000]/80 backdrop-blur-sm border rounded-2xl border-[#ffffff08] p-6 transition-all duration-300"
-                        >
-                            <div className="relative z-10">
-                                <p className="text-white font-medium tracking-wide mb-2">
-                                    {skill.title}
-                                </p>
-                                <div className="h-[1px] w-8 bg-[#6f1cd7]/30 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                            </div>
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#6f1cd7]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        </motion.div>
-                    ))}
-                </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}
+        >
+          {skills.map((skill, index) => (
+            <motion.div key={index} variants={itemVariants}>
+              <span className="tag" style={{ cursor: 'default' }}>{skill.title}</span>
+            </motion.div>
+          ))}
+        </motion.div>
 
-                <div className="mt-24">
-                    <Experience />
-                </div>
-            </div>
-        </section>
-    );
+        {/* Divider */}
+        <div className="section-divider" style={{ margin: '80px 0' }} />
+
+        {/* Experience */}
+        <div id="experience">
+          <Experience />
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Skills;

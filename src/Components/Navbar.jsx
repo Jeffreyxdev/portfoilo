@@ -1,122 +1,115 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, Mail  } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
-export default function FloatingNavbar() {
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, ArrowUpRight, Home } from 'lucide-react';
+import { FaXTwitter } from 'react-icons/fa6';
+
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const { scrollY } = useScroll();
-  
-  const navbarY = useTransform(scrollY, [0, 100], [0, -5]);
-  const navbarOpacity = useTransform(scrollY, [0, 50], [0.95, 1]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
- const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
-  useEffect(() => {
-    setTimeOfDay(getTimeOfDay());
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  function getTimeOfDay() {
-    const now = new Date();
-    const currentHour = now.getHours();
+  const scrollTo = (href) => {
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
-    if (currentHour >= 6 && currentHour < 12) {
-      return "morning";
-    } else if (currentHour >= 12 && currentHour < 18) {
-      return "afternoon";
-    } else {
-      return "evening";
-    }
-  }
   return (
-   
-    <>
-      <motion.nav
-        style={{ y: navbarY, opacity: navbarOpacity }}
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
-          scrolled ? 'w-[85%] max-w-4xl' : 'w-[90%] max-w-4xl'
-        }`}
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4"
+      style={{ paddingTop: scrolled ? '14px' : '20px', transition: 'padding 0.4s ease' }}
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {/* Unified Pill Nav — same on desktop AND mobile */}
+      <nav
+        className="flex items-center gap-1 px-3 py-2 rounded-full transition-all duration-500 w-auto max-w-full"
+        style={{
+          background: scrolled ? 'rgba(6,6,8,0.85)' : 'rgba(255,255,255,0.04)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255,255,255,0.07)',
+          boxShadow: scrolled ? '0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)' : 'none',
+        }}
       >
-        <motion.div
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className={`
-            backdrop-blur-md bg-white/60 rounded-full
-            border border-white/20 shadow-lg
-            px-6 py-4
-            flex items-center justify-between
-            transition-all duration-300
-            ${scrolled ? 'shadow-xl' : 'shadow-lg'}
-          `}
+        {/* Home */}
+        <motion.button
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.94 }}
+          onClick={() => scrollTo('#home')}
+          className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200"
+          style={{ color: 'var(--text-muted)' }}
+          aria-label="Home"
+          title="Home"
         >
-          {/* Logo/Initials */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="/"
-              target="_blank"
-              rel="noopener noreferrer"
-            className="cursor-pointer"
-          >
-            <div className="w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center shadow-md">
-              <span className="text-white font-bold text-xl">JA</span>
-            </div>
-          </motion.div>
-          <h2 className="lg:text-3xl sm:text-xl p-3 font-bold text-transparent bg-clip-text bg-blue-400  transition-all duration-700">
-  {timeOfDay === "morning" && <span> Good Morning</span>}
-  {timeOfDay === "afternoon" && <span> Good Afternoon</span>}
-  {timeOfDay === "evening" && <span> Good Evening</span>}
-</h2>
+          <Home size={16} />
+        </motion.button>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-3">
-            <motion.a
-              href="https://github.com/Jeffreyxdev"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              className="lg:w-11 lg:h-11 sm:h-9 sm:w-9 p-2 rounded-2xl bg-gray-900 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
-            >
-              <Github className="w-5 h-5 text-white" />
-            </motion.a>
+        {/* Divider */}
+        <div style={{ width: '1px', height: '20px', background: 'var(--border-subtle)', margin: '0 2px' }} />
 
-            <motion.a
-              href="mailto:agabaenwerejeffrey@gmail.com"
-              whileHover={{ scale: 1.1, rotate: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="lg:w-11 lg:h-11 sm:h-9 sm:w-9 p-2 rounded-2xl bg-gray-900 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
-            >
-              <Mail className="w-5 h-5 text-white" />
-            </motion.a>
+        {/* LinkedIn */}
+        <motion.a
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.94 }}
+          href="https://www.linkedin.com/in/jeffrey-agabaenwere/"
+          target="_blank" rel="noopener noreferrer"
+          className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200"
+          style={{ color: 'var(--text-muted)' }}
+          aria-label="LinkedIn"
+          title="LinkedIn"
+        >
+          <Mail size={16} />
+        </motion.a>
 
-              <motion.a
-              href="https://wa.me/2347045104464"
-              whileHover={{ scale: 1.1, rotate: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="lg:w-11 lg:h-11 sm:h-9 sm:w-9 p-2 rounded-2xl bg-gray-900 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
-            >
-              <FaWhatsapp className="w-5 h-5 text-white" />
-            </motion.a>
-            
-          </div>
-        </motion.div>
-      </motion.nav>
+        {/* GitHub */}
+        <motion.a
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.94 }}
+          href="https://github.com/Jeffreyxdev"
+          target="_blank" rel="noopener noreferrer"
+          className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200"
+          style={{ color: 'var(--text-muted)' }}
+          aria-label="GitHub"
+          title="GitHub"
+        >
+          <Github size={16} />
+        </motion.a>
 
-     
+        {/* X / Twitter */}
+        <motion.a
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.94 }}
+          href="https://x.com/JeffreyConnect"
+          target="_blank" rel="noopener noreferrer"
+          className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200"
+          style={{ color: 'var(--text-muted)' }}
+          aria-label="Twitter/X"
+          title="Twitter/X"
+        >
+          <FaXTwitter size={14} />
+        </motion.a>
 
-       
-        
-      
-      
-    </>
+        {/* Divider */}
+        <div style={{ width: '1px', height: '20px', background: 'var(--border-subtle)', margin: '0 2px' }} />
+
+        {/* CTA */}
+        <motion.a
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
+          href="https://calendly.com/agabaenwerejeffrey/design-"
+          target="_blank" rel="noopener noreferrer"
+          className="btn-primary"
+          style={{ padding: '8px 18px', fontSize: '13px', borderRadius: '100px', marginLeft: '2px' }}
+        >
+          Book a Call
+          <ArrowUpRight size={14} />
+        </motion.a>
+      </nav>
+    </motion.header>
   );
 }

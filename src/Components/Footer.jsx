@@ -1,8 +1,7 @@
-
-import React from "react";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { Copyright, FbIcon, IgIcon, InIcon, TwIcon } from "./svg";
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { Github, Linkedin } from 'lucide-react';
+import { FaXTwitter, FaInstagram } from 'react-icons/fa6';
 
 const Footer = () => {
   const [time, setTime] = useState('');
@@ -10,105 +9,67 @@ const Footer = () => {
 
   useEffect(() => {
     setMounted(true);
-    const updateTime = () => {
-      setTime(new Date().toLocaleTimeString('en-US', {
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      }));
-    };
-    
-    updateTime(); // Initial call
-    const timer = setInterval(updateTime, 1000);
-    return () => clearInterval(timer);
+    const update = () => setTime(new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+    update();
+    const t = setInterval(update, 1000);
+    return () => clearInterval(t);
   }, []);
 
-  // Return empty time string during server-side rendering
-  const displayTime = mounted ? time : '';
+  const socialsLinks = [
+    { href: 'https://github.com/Jeffreyxdev', icon: Github, label: 'GitHub' },
+    { href: 'https://www.linkedin.com/in/jeffrey-agabaenwere/', icon: Linkedin, label: 'LinkedIn' },
+    { href: 'https://x.com/JeffreyConnect', icon: FaXTwitter, label: 'Twitter' },
+    { href: 'https://www.instagram.com/tlc_jeffrey', icon: FaInstagram, label: 'Instagram' },
+  ];
 
   return (
-    <section className="mx-[30px] mt-[60px] pb-[20px] lg:pb-[50px] lg:mx-[76px] lg:mt-[150px]">
-       <div className="lg:max-w-[13000px] lg:mx-[71px] h-[2px] mt-[63.37px] bg-[#130b1c]"></div>
-      <div className="mt-[63px] flex flex-col-reverse justify-start gap-5 md:gap-0 md:flex md:flex-row md:justify-between md:items-center ">
-        <div className="flex flex-col justify-start items-start">
-          <div className="flex flex-row items-center lg:gap-[4px]">
-            <span>
-              <Copyright className="size-[18px] md:size-[20px]" />
-            </span>
-            <p className={`text-[#000] md:text-xl text-lg font-medium`}>
-              Jeffrey
-              <span className="text-[#000] text-[14px] lg:text-base">
-                {" "}
-                -
-              </span>{" "}
-              <span className="text-[#000] text-[14px] lg:text-base">
-                {new Date().getFullYear()}
-              </span>
+    <footer style={{ background: 'var(--bg-primary)', padding: '0 32px 32px' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div className="section-divider" style={{ marginBottom: '28px' }} />
+        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+          {/* Left */}
+          <div>
+            <p style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-secondary)' }}>
+              © Jeffrey Agabaenwere
+              <span style={{ color: 'var(--text-muted)', marginLeft: '6px' }}>— {new Date().getFullYear()}</span>
             </p>
+            {mounted && (
+              <p style={{ fontSize: '12px', fontFamily: 'monospace', letterSpacing: '0.1em', color: 'var(--accent)', opacity: 0.45, marginTop: '4px' }}>
+                {time}
+              </p>
+            )}
           </div>
-          <p className="text-[#000] transition-all duration-300 text-end text-sm lg:text-base mt-1">
-            {displayTime}
-          </p>
+
+          {/* Social links */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {socialsLinks.map(({ href, icon: Icon, label }) => (
+              <motion.a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={label}
+                style={{
+                  width: '36px', height: '36px', borderRadius: '50%',
+                  border: '1px solid var(--border-subtle)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  transition: 'border-color 0.25s ease, background 0.25s ease',
+                  textDecoration: 'none',
+                }}
+                className="footer-social"
+              >
+                <Icon size={15} style={{ color: 'var(--text-muted)' }} />
+              </motion.a>
+            ))}
+          </div>
         </div>
-        <div className="mt-[10px] md:mt-[65px] flex justify-start items-center gap-[20px] md:gap-[40px]">
-          <motion.a
-            href="https://www.facebook.com/share/1A9DExajDF/"
-            target="_blank"
-            rel="noreferrer"
-            whileTap={{ scale: 1.1 }}
-            whileHover={{ scale: 0.99 }}
-            className="h-auto w-auto"
-          >
-            <FbIcon
-              fill={`#000`}
-              className={`w-[30px] h-[30px] rounded-full border-[#000] border-solid border-[2px] p-0.5  transition-all duration-500 hover:bg-gray-500`}
-            />
-          </motion.a>
-          <motion.a
-            href="https://x.com/JeffreyConnect"
-            target="_blank"
-            rel="noreferrer"
-            whileTap={{ scale: 1.1 }}
-            whileHover={{ scale: 0.99 }}
-            className="h-auto w-auto"
-          >
-            <TwIcon
-              fill="#000"
-              className={`w-[30px] h-[30px] rounded-full border-[#000] border-solid border-[2px] p-1  transition-all duration-500 hover:bg-gray-500`}
-            />
-          </motion.a>
-          <motion.a
-            href="https://www.instagram.com/tlc_jeffrey"
-            target="_blank"
-            rel="noreferrer"
-            whileTap={{ scale: 1.1 }}
-            whileHover={{ scale: 0.99 }}
-            className="h-auto w-auto"
-          >
-            <IgIcon
-              fill={`#000`}
-              className={`w-[30px] h-[30px] rounded-full border-[#000] border-solid border-[2px] p-0.5  transition-all duration-500 hover:bg-gray-500`}
-            />
-          </motion.a>
-          <motion.a
-            href="https://www.linkedin.com/in/jeffrey-agabaenwere/"
-            target="_blank"
-            rel="noreferrer"
-            whileTap={{ scale: 1.1 }}
-            whileHover={{ scale: 0.99 }}
-            className="h-auto w-auto"
-          >
-            <InIcon
-              fill={`#000`}
-              className="w-[30px] h-[30px] rounded-full border-[#000] border-solid border-[2px] p-0.5  transition-all duration-700 hover:bg-gray-500"
-            />
-          </motion.a>
-        </div>
+        <style>{`
+          .footer-social:hover { border-color: var(--border-hover) !important; background: rgba(255,255,255,0.04) !important; }
+        `}</style>
       </div>
-
-
-    </section>
+    </footer>
   );
 };
 
