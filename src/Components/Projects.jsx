@@ -85,7 +85,7 @@ export default function Projects() {
       {/* Cloud orb accent */}
       <div className="cloud-orb cloud-orb-md" style={{ top: '10%', right: '-10%', animationDelay: '1s' }} />
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
 
         {/* Section Header */}
         <motion.div
@@ -259,10 +259,13 @@ export default function Projects() {
           {/* Project Cards */}
           {projects.map((project, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ display: 'block', height: '100%' }}>
-                <div className="card" style={{ padding: '22px 24px', borderRadius: '20px', height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ display: 'block', height: '100%', textDecoration: 'none' }}>
+                <div className="card" style={{ padding: '20px 25px', borderRadius: '20px', height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '10px' }}>
-                    <h3 style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '15px', lineHeight: 1.3 }}>{project.name}</h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#34d399', boxShadow: '0 0 6px rgba(52,211,153,0.4)', flexShrink: 0 }} />
+                      <h3 style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '15px', lineHeight: 1.3 }}>{project.name}</h3>
+                    </div>
                     <ArrowUpRight size={16} style={{ color: 'var(--text-muted)', flexShrink: 0, marginTop: '2px' }} />
                   </div>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6, flex: 1, marginBottom: '12px' }}>{project.desc}</p>
@@ -279,10 +282,15 @@ export default function Projects() {
         @media (max-width: 767px) {
           .projects-bento {
             grid-template-columns: 1fr !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow: hidden !important;
           }
-          .projects-bento > div[style*="span 2"] {
+          .projects-bento > div {
             grid-column: span 1 !important;
             grid-row: span 1 !important;
+            width: 100% !important;
+            max-width: 100% !important;
           }
         }
         @media (min-width: 768px) and (max-width: 1023px) {
